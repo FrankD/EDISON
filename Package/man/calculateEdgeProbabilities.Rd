@@ -1,0 +1,51 @@
+\name{calculateEdgeProbabilities}
+\alias{calculateEdgeProbabilities}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{Calculate the edge probabilities.
+}
+\description{
+This function calculates the marginal posterior probabilities of the edges in the network segments,
+for each timepoint, and optionally calculates the same for specified changepoints.
+}
+\usage{
+calculateEdgeProbabilities(network.samples, cps)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{network.samples}{Network samples obtained from the MCMC simulation using 
+\code{\link{EDISON.run}} and \code{\link{runDBN}}.
+}
+  \item{cps}{Optionally specifies changepoints to allow for calculating the marginal posterior edge
+probabilities for specific segments.
+}
+}
+\value{
+A list with elements:
+\item{probs.all}{A list containing marginal edge posterior probabilities for each timepoint.}
+\item{probs.segs}{A list containing marginal edge posterior probabilities for each specified segment.}
+}
+\author{Frank Dondelinger
+}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{
+\code{\link{calculateEdgeProbabilitiesTimePoints}}, 
+
+\code{\link{calculateEdgeProbabilitiesSegs}}
+}
+\examples{
+# Generate random gene network and simulate data from it
+dataset = simulateNetwork(l=25)
+
+# Run MCMC simulation to infer networks and changepoint locations
+result = EDISON.run(dataset$sim_data, num.iter=500)
+
+# Calculate marginal posterior probabilities of edges in the network
+network = calculateEdgeProbabilities(result)
+
+# Calculate marginal posterior probabilities of edges in the network, 
+# using the true changepoints
+true.cps = c(2,dataset$epsilon)
+network = calculateEdgeProbabilities(result, cps=true.cps)
+}

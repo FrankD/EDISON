@@ -1,0 +1,75 @@
+\name{phase.update}
+\alias{phase.update}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+Make a network structure or hyperparameter move.
+}
+\description{
+This function makes a network structure or information sharing hyperparameter move.
+}
+\usage{
+phase.update(Eall, Sall, Ball, Sig2all, X, Y, GLOBvar, HYPERvar, 
+
+target)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{Eall}{
+List of changepoints with one entry for each target node. Each entry has length equal to the number of changepoints for that target node.
+}
+  \item{Sall}{
+Network structure: List of length equal to the number of target nodes, where each list entry is a NumSegs by NumNodes matrix.
+}
+  \item{Ball}{
+Network structure with regression coefficients: Same as Sall, but with regression coefficients as matrix entries.
+}
+  \item{Sig2all}{
+Sigma squared.
+}
+  \item{X}{
+Input response data.
+}
+  \item{Y}{
+Input target data.
+}
+  \item{GLOBvar}{
+Global variables used during the MCMC simulation.
+}
+  \item{HYPERvar}{
+Hyperparameter variables.
+}
+  \item{target}{
+Current target node.
+}
+}
+\value{
+Returns a list with the following elements:
+\item{E}{Changepoints for the current target node.}
+\item{Sall}{Network structure (possibly updated).}
+\item{Ball}{Network structure regression coefficients (possibly updated).}
+\item{Sig2all}{Sigma squared.}
+\item{prior.params}{Information sharing prior hyperparameters (possibly updated).}
+\item{k}{Level-2 exponential prior hyperparameter (possibly updated).}
+\item{move}{Move type: 4 for a network structure move, 5 hyperparameter
+move.}
+\item{move}{Structure Move type: 1 for a network structure move, 2 for a level-1 hyperparameter move, 3 for a level-2 hyperparameter move.}
+\item{accept}{1 if the move has been accepted, 0 otherwise.}
+}
+\references{
+For more information on network structure moves and information sharing priors, see:
+
+Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with 
+Bayesian regularization for inferring gene regulatory networks with gradually 
+time-varying structure", Machine Learning.
+}
+\author{
+Sophie Lebre
+
+Frank Dondelinger
+}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{
+\code{\link{make_structure_move}}
+}

@@ -1,0 +1,49 @@
+\name{CalculateLikelihoodRatio}
+\alias{CalculateLikelihoodRatio}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+Calculates the ratio of two likelihoods in a structure move.
+}
+\description{
+This function calculates the ratio of the liklihoods in a network structure
+move. The returned value is the ratio for the modification of one edge in one
+segment.
+}
+\usage{
+CalculateLikelihoodRatio(gamma0, y, Pxlm, Pxl, v0, delta2, dir)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{gamma0}{Hyperparameter.
+}
+  \item{y}{Target data.
+}
+  \item{Pxlm}{Projection matrix with modified edge.
+}
+  \item{Pxl}{Original projection matrix.
+}
+  \item{v0}{Hyperparameter.
+}
+  \item{delta2}{Delta squared parameter (signal-to-noise).
+}
+  \item{dir}{Direction of the change: 1 = Added an edge. 2 = Removed an edge.
+ 0 = No change.
+}
+}
+\value{Returns the likelihood ratio.
+}
+\references{
+For more information about the hyperparameters and the functional form of the 
+likelihood, see:
+
+Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with 
+Bayesian regularization for inferring gene regulatory networks with gradually 
+time-varying structure", Machine Learning.
+}
+\author{Frank Dondelinger
+}
+
+\seealso{
+\code{\link{CalculatePriorRatio}}
+}
+

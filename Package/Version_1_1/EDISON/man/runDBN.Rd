@@ -1,0 +1,83 @@
+\name{runDBN}
+\alias{runDBN}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+Setup and run the MCMC simulation.
+}
+\description{
+This function initialises the variabes for the MCMC simulation, runs the simulation and returns the output.
+}
+\usage{
+runDBN(targetdata, preddata = NULL, q, n, multipleVar = TRUE, 
+
+minPhase = 2, niter = 20000, scaling = TRUE, method = "poisson", 
+
+prior.params = NULL, self.loops = TRUE, k = 15, options = NULL, 
+
+outputFile = ".")
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{targetdata}{
+Target input data: A matrix of dimensions NumNodes by NumTimePoints.
+}
+  \item{preddata}{
+Optional: Input response data, if different from the target data.
+}
+  \item{q}{
+Number of nodes.
+}
+  \item{n}{
+Number of timepoints.
+}
+  \item{multipleVar}{\code{TRUE} when a specific variance is estimated for each segment, \code{FALSE} otherwise.
+}
+  \item{minPhase}{
+Minimal segment length.
+}
+  \item{niter}{
+Number of MCMC iterations.
+}
+  \item{scaling}{
+If \code{TRUE}, scale the input data to mean 0 and standard deviation 1, else leave it unchanged.
+}
+  \item{method}{
+Network structure prior to use: \code{'poisson'} for a sparse Poisson prior (no information sharing), \code{'exp_hard'} or \code{'exp_soft'} for the exponential information sharing prior with hard or soft node coupling, \code{'bino_hard'} or \code{'bino_soft'} with hard or soft node coupling.
+}
+  \item{prior.params}{
+Initial hyperparameters for the information sharing prior.
+}
+  \item{self.loops}{
+If \code{TRUE}, allow self-loops in the network, if \code{FALSE}, disallow self-loops.
+}
+  \item{k}{
+Initial value for the level-2 hyperparameter of the exponential information sharing prior.
+}
+  \item{options}{
+MCMC options as obtained e.g. by the function \code{\link{defaultOptions}}.
+}
+  \item{outputFile}{
+File where the output of the MCMC simulation should be saved.
+}
+}
+\value{
+A list containing the results of the MCMC simulation: network samples, changepoint samples and hyperparameter samples. For details, see \code{\link{output}}.
+}
+\references{
+For more information about the MCMC simulations, see:
+
+Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with 
+Bayesian regularization for inferring gene regulatory networks with gradually 
+time-varying structure", Machine Learning.
+}
+\author{
+Sophie Lebre
+
+Frank Dondelinger
+}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{
+\code{\link{output}}
+}

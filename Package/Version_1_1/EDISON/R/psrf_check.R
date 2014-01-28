@@ -1,3 +1,19 @@
+#' Check the potential scale reduction factors for all parameters (edges).
+#' 
+#' This function treats the edges of the network as parameters, calculates
+#' their potential scale reduction factors and returns the highest value.
+#' 
+#' 
+#' @param params Matrix of parameters.
+#' @param q Number of nodes.
+#' @param k_max Number of segments.
+#' @param num_it Number of iterations/samples.
+#' @return Returns the highest PSRF value.
+#' @author Frank Dondelinger
+#' @seealso \code{\link{psrf}}, \code{\link{psrf_check_hyper}}
+#' @references Gelman and Rubin (1992) Inference from iterative simulation
+#' using multiple sequences, Statistical Science.
+#' @export psrf_check
 psrf_check <-
 function(params, q, k_max, num_it) {
   

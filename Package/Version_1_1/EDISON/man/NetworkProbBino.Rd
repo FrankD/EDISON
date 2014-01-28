@@ -1,45 +1,44 @@
 \name{NetworkProbBino}
 \alias{NetworkProbBino}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-Calculates the prior probability of the network segments under the binomial
-prior.
-}
-\description{
-This function calculates the (log) probability of the network segments using the 
-binomial information sharing prior.
-}
+\title{Calculates the prior probability of the network segments under the binomial
+prior.}
 \usage{
 NetworkProbBino(network.info, node.sharing = "soft")
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{network.info}{Network information collected by function \code{\link{CollectNetworkInfo}}.
-}
-  \item{node.sharing}{Coupling of hyperparameters among nodes: \code{'hard'} or \code{'soft'}.
-}
+  \item{network.info}{Network information collected by
+  function \code{\link{CollectNetworkInfo}}.}
+
+  \item{node.sharing}{Coupling of hyperparameters among
+  nodes: \code{'hard'} or \code{'soft'}.}
 }
 \value{
-Returns the log prior probability of the network segments under the binomial prior.
+Returns the log prior probability of the network segments
+under the binomial prior.
 }
-
-\references{
-For information about the binomial information sharing prior, see:
-
-Husmeier et al. (2010), "Inter-time segment information sharing for 
-non-homogeneous dynamic Bayesian networks", NIPS.
-
-Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with 
-Bayesian regularization for inferring gene regulatory networks with gradually 
-time-varying structure", Machine Learning.
+\description{
+This function calculates the (log) probability of the
+network segments using the binomial information sharing
+prior.
 }
-
 \author{
 Frank Dondelinger
 }
+\references{
+For information about the binomial information sharing
+prior, see:
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+Husmeier et al. (2010), "Inter-time segment information
+sharing for non-homogeneous dynamic Bayesian networks",
+NIPS.
 
-\seealso{
-\code{\link{NetworkRatioBino}}, \code{\link{CalculatePriorRatio}}
+Dondelinger et al. (2012), "Non-homogeneous dynamic
+Bayesian networks with Bayesian regularization for
+inferring gene regulatory networks with gradually
+time-varying structure", Machine Learning.
 }
+\seealso{
+\code{\link{NetworkRatioBino}},
+\code{\link{CalculatePriorRatio}}
+}
+

@@ -1,3 +1,16 @@
+#' Builds response Y and predictor X.
+#' 
+#' This function builds the response variables Y and predictor variables X from
+#' the input data.
+#' 
+#' 
+#' @param targetData Target input data.
+#' @param predData Predictor input data.
+#' @param GLOBvar Global variables of the MCMC simulation.
+#' @return A list with elements: \item{X}{Predictor variables.}
+#' \item{Y}{Response variables.}
+#' @author Sophie Lebre
+#' @export buildXY
 buildXY <-
 function(targetData, predData, GLOBvar){
   ### Build response Y and predictor X

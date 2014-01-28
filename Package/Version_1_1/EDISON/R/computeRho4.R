@@ -1,3 +1,25 @@
+#' Calculate proposal frequencies for changepoint moves.
+#' 
+#' This function calculates the frequency at which each of the different
+#' changepoint moves is proposed. For the poisson network structure prior, this
+#' ensures that the proposal frequency is equal to the prior probability.
+#' 
+#' 
+#' @param k The number of hidden states.
+#' @param kmin Minimum number of hidden states.
+#' @param kmax Maximum number of hidden states
+#' @param c Parameter.
+#' @param lambda Hyperparameter controlling the number of hidden states.
+#' @return Vector containing the proposal frequencies for the different
+#' changepoint moves.
+#' @author Sophie Lebre
+#' @references For more information about the hyperparameters and the
+#' functional form of the likelihood, see:
+#' 
+#' Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
+#' Bayesian regularization for inferring gene regulatory networks with
+#' gradually time-varying structure", Machine Learning.
+#' @export computeRho4
 computeRho4 <-
 function(k, kmin, kmax, c, lambda){
   # INPUT:   k the number of hidden states

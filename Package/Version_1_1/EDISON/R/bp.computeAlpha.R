@@ -1,3 +1,39 @@
+#' Computes the acceptance ratio of two changepoint configurations.
+#' 
+#' This function computes the acceptance ratio of two changepoint
+#' configurations with networks in a changepoint birth or death move.
+#' 
+#' 
+#' @param birth \code{1} for a changepoint birth move, \code{-1} for a
+#' changepoint death move.
+#' @param lNew Number of edges in the new segment.
+#' @param kminus Minimal number of changepoints between the two compared models
+#' (equal to \code{s} for a birth move, \code{s-1} for a death move.
+#' @param Ekl Changepoint on the left of proposed changepoint.
+#' @param Estar Changepoint being inserted or deleted.
+#' @param Ekr Changepoint on the right of proposed changepoint.
+#' @param yL Response data (left).
+#' @param PxL Projection matrix (left).
+#' @param yR Response data (right).
+#' @param PxR Projection matrix (right).
+#' @param y2 Response data (both).
+#' @param Px2 Projection matrix (both).
+#' @param D Hyperparameters for the number of edges in each segment.
+#' @param delta2 Hyperparameters for the empirical covariance (signal-to-noise
+#' ratio).
+#' @param q Total number of nodes in the network.
+#' @param smax Maximum number of changepoints.
+#' @param v0 Hyperparameter.
+#' @param gamma0 Hyperparameter.
+#' @param prior_ratio Ratio of network structure priors.
+#' @author Sophie Lebre
+#' @seealso \code{\link{cp.birth}}, \code{\link{cp.death}}
+#' @references For more information about the model, see:
+#' 
+#' Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
+#' Bayesian regularization for inferring gene regulatory networks with
+#' gradually time-varying structure", Machine Learning.
+#' @export bp.computeAlpha
 bp.computeAlpha <-
 function(birth,lNew,kminus,Ekl,Estar,Ekr,yL,PxL,yR,PxR,y2,Px2,D,delta2, q, smax, v0, gamma0, prior_ratio=1){
   # birth = 1 for birth, -1 for death.

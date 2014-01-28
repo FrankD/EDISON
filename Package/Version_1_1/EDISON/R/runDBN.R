@@ -1,3 +1,49 @@
+#' Setup and run the MCMC simulation.
+#' 
+#' This function initialises the variabes for the MCMC simulation, runs the
+#' simulation and returns the output.
+#' 
+#' 
+#' @param targetdata Target input data: A matrix of dimensions NumNodes by
+#' NumTimePoints.
+#' @param preddata Optional: Input response data, if different from the target
+#' data.
+#' @param q Number of nodes.
+#' @param n Number of timepoints.
+#' @param multipleVar \code{TRUE} when a specific variance is estimated for
+#' each segment, \code{FALSE} otherwise.
+#' @param minPhase Minimal segment length.
+#' @param niter Number of MCMC iterations.
+#' @param scaling If \code{TRUE}, scale the input data to mean 0 and standard
+#' deviation 1, else leave it unchanged.
+#' @param method Network structure prior to use: \code{'poisson'} for a sparse
+#' Poisson prior (no information sharing), \code{'exp_hard'} or
+#' \code{'exp_soft'} for the exponential information sharing prior with hard or
+#' soft node coupling, \code{'bino_hard'} or \code{'bino_soft'} with hard or
+#' soft node coupling.
+#' @param prior.params Initial hyperparameters for the information sharing
+#' prior.
+#' @param self.loops If \code{TRUE}, allow self-loops in the network, if
+#' \code{FALSE}, disallow self-loops.
+#' @param k Initial value for the level-2 hyperparameter of the exponential
+#' information sharing prior.
+#' @param options MCMC options as obtained e.g. by the function
+#' \code{\link{defaultOptions}}.
+#' @param outputFile File where the output of the MCMC simulation should be
+#' saved.
+#' @return A list containing the results of the MCMC simulation: network
+#' samples, changepoint samples and hyperparameter samples. For details, see
+#' \code{\link{output}}.
+#' @author Sophie Lebre
+#' 
+#' Frank Dondelinger
+#' @seealso \code{\link{output}}
+#' @references For more information about the MCMC simulations, see:
+#' 
+#' Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
+#' Bayesian regularization for inferring gene regulatory networks with
+#' gradually time-varying structure", Machine Learning.
+#' @export runDBN
 runDBN <-
 function(targetdata, preddata=NULL, q, n,
   multipleVar=TRUE, minPhase=2, 

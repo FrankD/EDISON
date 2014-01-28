@@ -1,3 +1,26 @@
+#' Collects and saves output.
+#' 
+#' This function collects the network, changepoint and hyperparameter samples
+#' taken from the MCMC simulation, and saves them to a file if appropriate.
+#' 
+#' 
+#' @param counters List of counters for the number of moves that have been
+#' proposed and accepted.
+#' @param listStock Network, changepoint and hyperparameter samples.
+#' @param GLOBvar Global variables of the MCMC simulation.
+#' @param HYPERvar Hyperparameter variables.
+#' @param OUTvar Output variables, including the output file.
+#' @return Returns a list with an element for each target node which is also a
+#' list. Each sublist containts the elements: \item{cp_samples }{Changepoint
+#' samples, a NumSamples by MaxNumChangePoints matrix.}
+#' \item{edge_samples}{Network samples (with regression parameters), a
+#' NumSamples by (NumSegs * NumNodes) matrix.} \item{target}{The target node
+#' for this subnetwork.} \item{hyper_samples}{Information sharing prior
+#' hyperparameter samples, a NumSamples by NumHyperParams matrix.}
+#' \item{sampled}{Sampled iterations.} \item{counters}{Counters for the number
+#' of proposed and accepted moves.}
+#' @author Frank Dondelinger
+#' @export output
 output <-
 function(counters, listStock, GLOBvar, HYPERvar, OUTvar){
 

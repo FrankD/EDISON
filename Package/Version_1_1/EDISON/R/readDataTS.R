@@ -1,3 +1,18 @@
+#' Read target data.
+#' 
+#' This function reads in the target data.
+#' 
+#' 
+#' @param data Input data matrix to read.
+#' @param posI Position of interest.
+#' @param t0 First timepoint.
+#' @param tf Last timepoint.
+#' @param m Number of repetitions.
+#' @param n Number of timepoints.
+#' @return Returns the target data.
+#' @author Sophie Lebre
+#' @seealso \code{\link{buildXY}}
+#' @export readDataTS
 readDataTS <-
 function(data, posI, t0, tf, m, n){
   # data = matrix to read

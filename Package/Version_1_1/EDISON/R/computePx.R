@@ -1,3 +1,22 @@
+#' Compute projection matrix.
+#' 
+#' This function computes the projection matrix that is needed for calculation
+#' of the likelihood.
+#' 
+#' 
+#' @param len Delimiting breakpoints.
+#' @param x The observations of x in the corresponding state.
+#' @param delta2 Signal-to-noise ratio hyperparameter.
+#' @return The projection matrix.
+#' @author Sophie Lebre
+#' @seealso \code{\link{CalculateLikelihoodRatio}}
+#' @references For more information about the hyperparameters and the
+#' functional form of the likelihood, see:
+#' 
+#' Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
+#' Bayesian regularization for inferring gene regulatory networks with
+#' gradually time-varying structure", Machine Learning.
+#' @export computePx
 computePx <-
 function(len, x, delta2){
   # INPUT: len, delimiting breakpoints.

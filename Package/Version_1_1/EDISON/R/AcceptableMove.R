@@ -1,3 +1,24 @@
+#' Check if move is acceptable.
+#' 
+#' This function takes as input a new network proposal and checks that the
+#' proposal does not exceed the maximum number of parents for a node, and that
+#' there are no self loops (if self loops have been disallowed).
+#' 
+#' 
+#' @param proposal The proposed network (K-by-q matrix with K segments and q
+#' parent sets).
+#' @param qmax Maximum number of parents allowed.
+#' @param self.loops Flag indicating whether self loops are allowed.
+#' @param target The current target node (only needed to find out which parent
+#' would be the self loop).
+#' @param fixed.edges Which edges in the network should be fixed for all 
+#' segments (q-by-q matrix with entries 0 for fixed non-edge, 1 for fixed edge,
+#' -1 for non-fixed edge).
+#' @return Returns \code{TRUE} if the proposed move is acceptable, \code{FALSE}
+#' otherwise.
+#' @author Frank Dondelinger
+#' @seealso \code{\link{make_structure_move}}
+#' @export AcceptableMove
 AcceptableMove <-
 function(proposal, qmax, self.loops, target, fixed.edges) {
   # Checks if the proposed network is valid (does not exceed the maximum 

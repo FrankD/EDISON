@@ -1,3 +1,37 @@
+#' Makes a structure move.
+#' 
+#' This function makes a network structure move.
+#' 
+#' 
+#' @param x Response data.
+#' @param y Target data.
+#' @param S Network structure for the current target node, a NumSegs by
+#' NumNodes matrix.
+#' @param B Same as \code{S}, but including the regression parameters.
+#' @param Sig2 Sigma squared parameters.
+#' @param q Number of nodes.
+#' @param qmax Maximum number of parents.
+#' @param network.info Network information, as collected by
+#' \code{\link{CollectNetworkInfo}}.
+#' @param method Information sharing method: Either \code{'poisson'},
+#' \code{'exp_hard'},
+#' 
+#' \code{'exp_soft'}, \code{'bino_hard'}, \code{'bino_soft'}.
+#' @param Mphase Segment boundary positions.
+#' @param E Changepoint vector.
+#' @param HYPERvar Hyperparameter variables.
+#' @return Returns a list containing the following elements:
+#' \item{newS}{Updated network structure.} \item{newB}{Updated network
+#' structure with regression parameters.} \item{move}{Type of move being made:
+#' 1 for network structure moves.} \item{accept}{\code{1} if the move has been
+#' accepted, \code{0} otherwise.}
+#' @author Frank Dondelinger
+#' @references For more information about the MCMC moves, see:
+#' 
+#' Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
+#' Bayesian regularization for inferring gene regulatory networks with
+#' gradually time-varying structure", Machine Learning.
+#' @export make_structure_move
 make_structure_move <-
 function(x, y, S, B, Sig2, q,  
                                 qmax, network.info, method, Mphase, E, 

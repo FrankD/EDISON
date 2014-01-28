@@ -1,37 +1,24 @@
 \name{psrf}
 \alias{psrf}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-Calculates the potential scale reduction factor.
-}
-\description{
-This function calculates the potential scale reduction factor of parameters or hyperparameters over several MCMC simulations (or one simulation split up). This can serve as a convergence diagnostic.
-}
+\title{Calculates the potential scale reduction factor.}
 \usage{
 psrf(parameters)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{parameters}{
-A list of MCMC trajectories, where each trajectory is a matrix with NumParams rows and NumIterations columns, where NumParams is the number of parameters and NumIterations is the number of samples.
-}
+  \item{parameters}{A list of MCMC trajectories, where each
+  trajectory is a matrix with NumParams rows and
+  NumIterations columns, where NumParams is the number of
+  parameters and NumIterations is the number of samples.}
 }
 \value{
-A vectors of length NumParams, containing the PSRF values for each parameter.
+A vectors of length NumParams, containing the PSRF values
+for each parameter.
 }
-\references{
-Gelman and Rubin (1992) Inference from iterative simulation using multiple sequences, Statistical Science.
-}
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-\code{\link{psrf_check}}, \code{\link{psrf_check_hyper}}
+\description{
+This function calculates the potential scale reduction
+factor of parameters or hyperparameters over several MCMC
+simulations (or one simulation split up). This can serve as
+a convergence diagnostic.
 }
 \examples{
 # Generate 5 'runs' of random samples from Gaussian N(0,1)
@@ -42,7 +29,7 @@ for(run in 1:5) {
 }
 
 # Check potential scale reduction factor
-# (Will be very close to 1 due to the samples being from 
+# (Will be very close to 1 due to the samples being from
 # the same distribution)
 psrf.val = psrf(samples)
 
@@ -56,5 +43,17 @@ for(run in 1:5) {
 # Check potential scale reduction factor
 # (Should be > 1.1)
 psrf.val = psrf(samples)
-
 }
+\author{
+Sophie Lebre
+
+Frank Dondelinger
+}
+\references{
+Gelman and Rubin (1992) Inference from iterative simulation
+using multiple sequences, Statistical Science.
+}
+\seealso{
+\code{\link{psrf_check}}, \code{\link{psrf_check_hyper}}
+}
+

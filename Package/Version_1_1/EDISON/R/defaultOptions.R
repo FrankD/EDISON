@@ -1,3 +1,46 @@
+#' Set the default options for the MCMC simulation.
+#' 
+#' This function creates a list with the default options of the MCMC
+#' simulation.
+#' 
+#' 
+#' @return A list of default options with elements: \item{lmax}{Maximum number
+#' of parent nodes. Default=5.} \item{m}{Number of repeated measurements.
+#' Default=1 (no repeats).} \item{dyn}{Lag for the DBN model. Default = 1 when
+#' X(t) depends on the previous measurement X(t-1), but dyn can be chosen equal
+#' to 2, 3, ...} \item{minPhase}{Minimal length of a segment. Default=2.}
+#' \item{maxCP}{Maximal number of changepoints. Default=10.}
+#' \item{maxTF}{Maximal number of incoming edges for each node. Default=5.}
+#' \item{alphaCP}{Hyperparameter for the number of changepoints. Default=1.}
+#' \item{betaCP}{Hyperparameter for the number of changepoints. Default=0.5.}
+#' \item{alphaTF}{Hyperparameter for the number of incoming edges. Default=1.}
+#' \item{betaTF}{Hyperparameter for the number of incoming edges. Default=0.5.}
+#' \item{burnin}{Whether to include a burnin period. Default=F.}
+#' \item{psrf.check}{Whether to calculate the potential scale reduction factor
+#' (PSRF). Default=F.} \item{pp.l1}{Proposal frequency for level-1
+#' hyperparameter moves. Default=0.2.} \item{pp.l2}{Proposal frequency for
+#' level-2 hyperparameter moves. Default=0.01.} \item{save.by.node}{Whether to
+#' save results separately for each target node. Default=F.}
+#' \item{save.file}{Whether to save the results to a file. Default=F.}
+#' \item{hyper.fixed}{Whether to keep the network structure prior
+#' hyperparameters fixed. Default=F.} \item{cp.fixed}{Whether to keep the
+#' changepoints fixed. Default=F.} \item{hyper.init}{Initial values for the
+#' network structure prior hyperparameters. Default=NULL.}
+#' \item{cp.init}{Initial values for the changepoint locations. Default=NULL.}
+#' @author Frank Dondelinger
+#' @examples
+#' 
+#' # Set options to allow saving network and changepoint samples to file
+#' options = defaultOptions()
+#' options$save.file = TRUE
+#' 
+#' # NOT EXECUTED
+#' # result.bino2 = EDISON.run(dataset$sim_data, 
+#' #                  information.sharing='bino_hard',
+#' #                  num.iter=5000, output.file='bino2.results',
+#' #                  options=options)
+#' 
+#' @export defaultOptions
 defaultOptions <-
 function() {
   

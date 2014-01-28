@@ -1,3 +1,29 @@
+#' Calculates the ratio of an exponential hyperparameter move.
+#' 
+#' This function calculates the acceptance ratio of a level-1 hyperparameter
+#' move for a given target node.
+#' 
+#' 
+#' @param beta.proposed Proposed new hyperparameter value.
+#' @param beta.old Previous value of hyperparameter beta.
+#' @param target.net Network segments for the target node associated with this
+#' hyperparameter value.
+#' @param self.loops \code{'TRUE'} if self-loops are acceptable, \code{'FALSE'}
+#' otherwise.
+#' @return Returns the ratio of the exponential prior with the previous
+#' hyperparameter value and the proposed new hyperparameter value.
+#' @author Frank Dondelinger
+#' @seealso \code{\link{ExpHyperMove}}
+#' @references For information about the exponential information sharing prior,
+#' see:
+#' 
+#' Husmeier et al. (2010), "Inter-time segment information sharing for
+#' non-homogeneous dynamic Bayesian networks", NIPS.
+#' 
+#' Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
+#' Bayesian regularization for inferring gene regulatory networks with
+#' gradually time-varying structure", Machine Learning.
+#' @export ExpHyperRatioTarget
 ExpHyperRatioTarget <-
 function(beta.proposed, beta.old, target.net, self.loops) {
   # Calculates the acceptance ratio of a level-1 hyperparameter move for the 

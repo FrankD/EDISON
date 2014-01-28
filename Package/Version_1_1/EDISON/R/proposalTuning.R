@@ -1,3 +1,15 @@
+#' Tune the proposal width for betas.
+#' 
+#' This function adjusts the proposal width for the beta hyperparameter(s) of
+#' the exponential information sharing prior, so that the acceptance rate is
+#' close to 0.25.
+#' 
+#' 
+#' @param acceptRate Current acceptance rate.
+#' @param hyper.proposals Current proposal width.
+#' @return Returns the new proposal width.
+#' @author Frank Dondelinger
+#' @export proposalTuning
 proposalTuning <-
 function(acceptRate, hyper.proposals) {
   if(is.nan(acceptRate[2])) return(hyper.proposals)

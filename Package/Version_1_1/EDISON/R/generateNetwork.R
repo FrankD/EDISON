@@ -1,3 +1,54 @@
+#' Generate a random network.
+#' 
+#' This function generates a random network with changepoints for structure
+#' changes, for simulating synthetic data.
+#' 
+#' 
+#' @param lambda_2 Average number of parents for each node in the network
+#' (parameter for a Poisson distribution).
+#' @param q Number of nodes.
+#' @param min_phase_length Minimum segment length.
+#' @param k_bar Maximum number of changepoints. If \code{fixed=TRUE}, this is
+#' equal to the number of changepoints.
+#' @param l Length of the time series.
+#' @param lambda_3 Average number of structure changes between two segments
+#' (parameter for a Poisson distribution).
+#' @param spacing \code{1} if segments are equally spaced, \code{0} if they are
+#' spaced randomly (subject to the constraints of min_phase_length).
+#' @param gauss_weights \code{1} if edge weights in the network are drawn from
+#' N(0, 1), \code{0} if they are fixed to be 1.
+#' @param same \code{1} if all segments have the same network structure (no
+#' changes), \code{0} otherwise.
+#' @param change_method \code{'sequential'} if the changes happen sequentially
+#' (i.e. changes at segment i are applied to segment i-1),
+#' \code{'hierarchical'} if the changes happen with respect to a hypernetwork
+#' (i.e. changes at segment i are applied to segment 0).
+#' @param fixed \code{T} if the changepoint locations are fixed, \code{F} if
+#' they should be sampled.
+#' @param cps Changepoint locations (if they are fixed).
+#' @return A list with the following elements: \item{network}{The network, a
+#' list of length NumSegs, where each element is a NumNodes by NumNodes
+#' matrix.} \item{epsilon}{The vector of changepoint locations.} \item{k}{The
+#' number of changepoint.} \item{changes}{The number of changes among
+#' segments.}
+#' @author Frank Dondelinger
+#' @seealso \code{\link{simulateNetwork}}
+#' @examples
+#' 
+#' # Generate random network with default parameters
+#' network = generateNetwork()
+#' 
+#' # Simulate data using generated network
+#' dataset = simulateNetwork(net=network)
+#' 
+#' # Generate random network with 4 changepoints and 15 nodes, 
+#' # with changepoints distributed over a timeseries of length 50
+#' network = generateNetwork(l=50, q=15, fixed=TRUE, k_bar=4)
+#' 
+#' # Simulate data of length 50 using generated network
+#' dataset = simulateNetwork(net=network)
+#' 
+#' @export generateNetwork
 generateNetwork <-
 function(lambda_2=0.45, q=10, min_phase_length=1, k_bar=5, l=10, 
                             lambda_3=2, spacing=1, gauss_weights=TRUE, same=FALSE, 

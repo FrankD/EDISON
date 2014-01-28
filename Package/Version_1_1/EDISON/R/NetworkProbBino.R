@@ -1,3 +1,28 @@
+#' Calculates the prior probability of the network segments under the binomial
+#' prior.
+#' 
+#' This function calculates the (log) probability of the network segments using
+#' the binomial information sharing prior.
+#' 
+#' 
+#' @param network.info Network information collected by function
+#' \code{\link{CollectNetworkInfo}}.
+#' @param node.sharing Coupling of hyperparameters among nodes: \code{'hard'}
+#' or \code{'soft'}.
+#' @return Returns the log prior probability of the network segments under the
+#' binomial prior.
+#' @author Frank Dondelinger
+#' @seealso \code{\link{NetworkRatioBino}}, \code{\link{CalculatePriorRatio}}
+#' @references For information about the binomial information sharing prior,
+#' see:
+#' 
+#' Husmeier et al. (2010), "Inter-time segment information sharing for
+#' non-homogeneous dynamic Bayesian networks", NIPS.
+#' 
+#' Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
+#' Bayesian regularization for inferring gene regulatory networks with
+#' gradually time-varying structure", Machine Learning.
+#' @export NetworkProbBino
 NetworkProbBino <-
 function(network.info, node.sharing='soft') {
   # Calculate the (log) probability \prod_i P(M_i|M_{i-1}), where M_i is

@@ -1,0 +1,12 @@
+bibentry("Article",
+   title = "Non-homogeneous dynamic Bayesian networks with Bayesian regularization for inferring gene regulatory networks with gradually time-varying structure",
+   author = "F. Dondelinger and S. L\\`{e}bre, and D. Husmeier",
+   year   = "2013",
+   journal  = "Machine Learning",
+   volume = "90",
+   issue = "2",
+   pages = "191-230",
+   mheader = "To cite package EDISON in publications use:",
+   mfooter = ""
+)
+

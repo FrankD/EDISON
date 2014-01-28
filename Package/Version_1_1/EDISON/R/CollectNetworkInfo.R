@@ -1,3 +1,32 @@
+#' Collects all the network information in one list.
+#' 
+#' This function collects information about the current network segments and
+#' hyperparameters for the information sharing priors.
+#' 
+#' 
+#' @param Sall Structure of all segments. A list of length \code{q}, where each
+#' element is a \code{K_i} by \code{q} matrix containing the parents for the
+#' current node in each of the \code{K_i} segments.
+#' @param Eall Positions of segment boundaries. A list of length \code{q},
+#' where each element is a vector containing the segment boundaries for the
+#' current parent node.
+#' @param prior.params The hyperparameters of the information sharing prior (if
+#' applicable).
+#' @param posPhase The segment being changed.
+#' @param target The target parent node whose edge is being changed.
+#' @param q The total number of nodes in the network.
+#' @param self.loops Whether self-loops are allowed in the network.
+#' @param k The level-2 hyperparameter for the exponential prior.
+#' @return The function returns a list with the following elements:
+#' \item{nets}{The structure of all segments, a list of length \code{K} where K
+#' is the total number of segments over all nodes.} \item{segment}{Identical to
+#' \code{posPhase}.} \item{target.nets}{Identical to \code{Sall}.}
+#' \item{prior.params}{Identical to \code{prior.params}.}
+#' \item{self.loops}{Identical to \code{self.loops}.} \item{k}{Identical to
+#' \code{k}.} \item{new.nets}{Dummy variable for holding the proposed network
+#' in a network structure move. Originally identical to variable \code{nets}.}
+#' @author Frank Dondelinger
+#' @export CollectNetworkInfo
 CollectNetworkInfo <-
 function(Sall, Eall, prior.params, posPhase, target, 
                                q, self.loops, k) {

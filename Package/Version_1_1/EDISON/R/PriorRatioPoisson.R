@@ -39,28 +39,33 @@ function(network.info, q, lambda) {
     q = q - 1
   }
   
+  # Calculate this prior over local segments only to avoid over-counting
+  E = network.info$global.mapping[network.info$target,]
+  
   # Calculate for each segment
   for(segment in 1:length(network.info$nets)) {
-    s.old = sum(network.info$nets[[segment]][,network.info$target])
-    s.new = sum(network.info$new.nets[[segment]][,network.info$target]) 
+    
+    # Omit repeated segments
+    if(segment == 1 || E[segment] != E[segment-1]) {
+      s.old = sum(network.info$nets[[segment]][,network.info$target])
+      s.new = sum(network.info$new.nets[[segment]][,network.info$target]) 
    
-    # If change 
-    if(abs(s.old - s.new) != 0) {
-      # If added one edge
-      if(s.new - s.old == 1) {
-        ratio = ratio  * lambda[segment] / (q - s.old)
-      # If deleted one edge
-      } else if(s.new - s.old == -1) {
-        ratio = ratio * (q - s.new) / lambda[segment]
-      } else {
-        p.new = factorial(q - s.new) * lambda[segment] ^ s.new
-        p.old = factorial(q - s.old) * lambda[segment] ^ s.old
-        ratio = ratio * (p.new / p.old)
-      }
-    }  
+      # If change 
+      if(abs(s.old - s.new) != 0) {
+        # If added one edge
+        if(s.new - s.old == 1) {
+          ratio = ratio  * lambda[segment] / (q - s.old)
+        # If deleted one edge
+        } else if(s.new - s.old == -1) {
+          ratio = ratio * (q - s.new) / lambda[segment]
+        } else {
+          p.new = factorial(q - s.new) * lambda[segment] ^ s.new
+          p.old = factorial(q - s.old) * lambda[segment] ^ s.old
+          ratio = ratio * (p.new / p.old)
+        }
+      }  
+    }
   }
-
-  
   return(ratio)
 }
 

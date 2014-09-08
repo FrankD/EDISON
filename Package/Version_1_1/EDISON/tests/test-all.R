@@ -1,4 +1,2 @@
 library(testthat)
-library(EDISON)
-
-test_package('EDISON')
+test_check("EDISON")

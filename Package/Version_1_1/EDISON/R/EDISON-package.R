@@ -7,19 +7,20 @@
 #' Networks segments and changepoints are inferred concurrently, and
 #' information sharing priors provide a reduction of the inference uncertainty.
 #' 
-#' \tabular{ll}{ Package: \tab nhDBN\cr Type: \tab Package\cr Version: \tab
-#' 1.0\cr Date: \tab 2012-06-21\cr License: \tab GPL-2\cr LazyLoad: \tab yes\cr
+#' \tabular{ll}{ Package: \tab EDISON\cr Type: \tab Package\cr Version: \tab
+#' 1.1\cr Date: \tab 2012-06-21\cr License: \tab GPL-2\cr LazyLoad: \tab yes\cr
 #' }
 #' 
 #' @name EDISON-package
 #' @aliases EDISON-package EDISON
 #' @docType package
+#' @import MASS
+#' @import corpcor
 #' @author Frank Dondelinger, Sophie Lebre
 #' 
 #' Maintainer: Frank Dondelinger <frankd@@bioss.ac.uk>
 #' @seealso \code{\link[corpcor:corpcor-package]{corpcor}}
 #' 
-#' \code{\link[ARTIVA:ARTIVA-package]{ARTIVA}}
 #' @references Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian
 #' networks with Bayesian regularization for inferring gene regulatory networks
 #' with gradually time-varying structure", Machine Learning.

@@ -31,6 +31,9 @@
 #' \code{\link{defaultOptions}}.
 #' @param outputFile File where the output of the MCMC simulation should be
 #' saved.
+#' @param fixed.edges Matrix of size NumNodes by NumNodes, with 
+#' \code{fixed.edges[i,j]==1|0} if the edge between nodes i and j is fixed, and 
+#' -1 otherwise. Defaults to \code{NULL} (no edges fixed).
 #' @return A list containing the results of the MCMC simulation: network
 #' samples, changepoint samples and hyperparameter samples. For details, see
 #' \code{\link{output}}.

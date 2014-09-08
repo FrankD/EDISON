@@ -19,6 +19,9 @@
 #' \code{'exp_soft'}, \code{'bino_hard'}, \code{'bino_soft'}.
 #' @param Mphase Segment boundary positions.
 #' @param E Changepoint vector.
+#' @param fixed.edges Matrix of size NumNodes by NumNodes, with 
+#' \code{fixed.edges[i,j]==1|0} if the edge between nodes i and j is fixed, and 
+#' -1 otherwise. Defaults to \code{NULL} (no edges fixed).
 #' @param HYPERvar Hyperparameter variables.
 #' @return Returns a list containing the following elements:
 #' \item{newS}{Updated network structure.} \item{newB}{Updated network

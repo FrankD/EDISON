@@ -2,10 +2,10 @@
 #' 
 #' Updates the network.info data structure so that it stays consistent.
 #' 
-#' @param network.info: Data structure containing the current network.
-#' @param newS: Proposed new network for this target, a num.local.segs by 
+#' @param network.info Data structure containing the current network.
+#' @param newS Proposed new network for this target, a num.local.segs by 
 #' num.parents matrix.
-#' @param E: The current vector of local segments for this target (only used to 
+#' @param E The current vector of local segments for this target (only used to 
 #' check for consistency with the network.info change points).
 #' @return Updated network.info data structure, with new network added to 
 #' new.nets.

@@ -2,7 +2,7 @@ Package: EDISON
 Type: Package
 Title: Network Reconstruction and Changepoint Detection
 Version: 1.1.1
-Date: 2016-30-03
+Date: 2016-03-30
 Author: Frank Dondelinger, Sophie Lebre
 Maintainer: Frank Dondelinger <fdondelinger.work@gmail.com>
 Description: Package EDISON (Estimation of Directed Interactions from
@@ -19,7 +19,7 @@ Suggests:
 Depends:
     corpcor,
     MASS
-Packaged: 2016-30-03 11:33:10 UTC; frankd
+Packaged: 2016-03-30 11:33:10 UTC; frankd
 Repository: CRAN
-Date/Publication: 2016-30-03 11:24:38
+Date/Publication: 2016-03-30 11:24:38
 RoxygenNote: 5.0.1

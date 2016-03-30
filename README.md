@@ -14,3 +14,10 @@ Learning.
 
 CRAN Version: http://cran.r-project.org/web/packages/EDISON/index.html
 
+**Install from GitHub**
+
+```
+library('devtools')
+install_github('FrankD/EDISON/Package/Version_X_Y/EDISON')
+```
+

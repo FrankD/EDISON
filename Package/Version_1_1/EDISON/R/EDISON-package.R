@@ -8,7 +8,7 @@
 #' information sharing priors provide a reduction of the inference uncertainty.
 #' 
 #' \tabular{ll}{ Package: \tab EDISON\cr Type: \tab Package\cr Version: \tab
-#' 1.1\cr Date: \tab 2012-06-21\cr License: \tab GPL-2\cr LazyLoad: \tab yes\cr
+#' 1.1.1\cr Date: \tab 2016-03-30\cr License: \tab GPL-2\cr LazyLoad: \tab yes\cr
 #' }
 #' 
 #' @name EDISON-package
@@ -18,7 +18,7 @@
 #' @import corpcor
 #' @author Frank Dondelinger, Sophie Lebre
 #' 
-#' Maintainer: Frank Dondelinger <frankd@@bioss.ac.uk>
+#' Maintainer: Frank Dondelinger <fdondelinger.work@@gmail.com>
 #' @seealso \code{\link[corpcor:corpcor-package]{corpcor}}
 #' 
 #' @references Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian

@@ -1,0 +1,14 @@
+RELEASE HISTORY OF THE "EDISON" PACKAGE
+
+Version 1.1.1
+
+ - Fixed incorrect log transformation in dinvgamma function.
+
+Version 1.1
+
+ - Fixed double counting bug in Poisson prior.
+ - Implemented option to fix specified edges in the network.
+
+Version 1.0
+
+ - Initial Release

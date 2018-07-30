@@ -104,43 +104,42 @@ function(targetdata, preddata=NULL, q, n,
   }else{ 
 	  nbVarMax=1
   }
-
+  
+  # Standardise inputs to N(0,1)
+  if(scaling){
+    targetdata = sweep(targetdata, 3, apply(targetdata, 3, mean))
+    targetdata = sweep(targetdata, 3, apply(targetdata, 3, sd), '/')
+  }
+  
   # Read input data
   targetData = targetdata
 	predData=targetData
 
-  # Standardise inputs to N(0,1)
-  if(scaling){
-  	targetData = t(scale(t(targetData)))
-  	predData = t(scale(t(predData)))
-  }
-  
   # A few tests :
-  # targetData and predData must have the same number of columns
-  if(ncol(targetData) != ncol(predData)) stop("Target data and input data don't have the same number of columns.\n")
   # The number of columns corresponds to n (timepoints) x m (repetitions)
-  if(ncol(targetData) != n*m) stop("Number of columns incompatible with n and m.\n")
+  if(dim(targetData)[2] != n*m) stop("Number of columns incompatible with n and m.\n")
 
   # List of genes analyzed :
   # Analyze all rows of targetData
-  posResponse = 1:nrow(targetData)
+  posResponse = 1:dim(targetData)[3]
   
 
   # Names of predictors
   # Take rownames of predData
-  predNames = row.names(predData)
+  predNames = dimnames(predData)[[3]]
   
   # Names of targets
   # Take rownames of predData
-  targetNames = row.names(targetData)
+  targetNames = dimnames(targetData)[[3]]
   
   # Position of the predictor variables in the data for each response 
   # (matrix [nrow(targetData) x q]) 
   # By default all the predictors of predData are taken for each gene
-  bestPosMat = matrix(1:q, nrow(targetData), q, byrow=TRUE)
+  bestPosMat = matrix(1:q, q, q, byrow=TRUE)
     
   ### Create Global Variables used in all functions
-  GLOBvar = list(n=n, m=m, p=1, q=q, qmax=options$maxTF, smax=options$maxCP, 
+  GLOBvar = list(n=n, m=dim(targetData)[1], 
+                 p=1, q=q, qmax=options$maxTF, smax=options$maxCP, 
                  dyn=options$dyn, 
     minPhase=minPhase, nbVarMax=nbVarMax, Mphase=Mphase, bestPosMat=bestPosMat, 
     niter=niter, target=NULL,predNames=predNames, targetNames=targetNames, 

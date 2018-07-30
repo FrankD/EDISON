@@ -27,9 +27,10 @@
 #' changes at segment i are applied to segment i-1), \code{'hierarchical'} if
 #' the changes happen with respect to a hypernetwork (i.e. changes at segment i
 #' are applied to segment 0).
-#' @param fixed \code{T} if the changepoint locations are fixed, \code{F} if
-#' they should be sampled.
-#' @param cps Changepoint locations (if they are fixed).
+#' @param fixed \code{TRUE} if the number changepoint locations is fixed, 
+#' \code{FALSE} if it should be sampled.
+#' @param cps Changepoint locations (if they are fixed), e.g. 
+#' \code{cps=c(10,20)} creates changepoints at \code{t=10} and \code{t=20}.
 #' @param saveFile If not \code{NULL}, indicates the filename for saving the
 #' output in R data format.
 #' @return A list with elements: \item{sim_data}{A matrix of length NumNodes by

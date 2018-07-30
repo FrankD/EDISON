@@ -9,7 +9,7 @@
 #' @param q Number of nodes.
 #' @param min_phase_length Minimum segment length.
 #' @param k_bar Maximum number of changepoints. If \code{fixed=TRUE}, this is
-#' equal to the number of changepoints.
+#' equal to the number of changepoints. Set \code{k_bar=0} for no changepoints.
 #' @param l Length of the time series.
 #' @param lambda_3 Average number of structure changes between two segments
 #' (parameter for a Poisson distribution).
@@ -23,8 +23,8 @@
 #' (i.e. changes at segment i are applied to segment i-1),
 #' \code{'hierarchical'} if the changes happen with respect to a hypernetwork
 #' (i.e. changes at segment i are applied to segment 0).
-#' @param fixed \code{T} if the changepoint locations are fixed, \code{F} if
-#' they should be sampled.
+#' @param fixed \code{TRUE} if the number changepoint locations is fixed, 
+#' \code{FALSE} if it should be sampled.
 #' @param cps Changepoint locations (if they are fixed).
 #' @return A list with the following elements: \item{network}{The network, a
 #' list of length NumSegs, where each element is a NumNodes by NumNodes
@@ -57,13 +57,16 @@ function(lambda_2=0.45, q=10, min_phase_length=1, k_bar=5, l=10,
   # Draw hyperparameters
   lambda_1 = 6  
 
-  k = k_bar + 1;
   epsilon = c();
 
-  if(!is.null(cps)) {
-    epsilon = cps;
-    k = length(epsilon);
+  if(k_bar<1) { # No changepoints
+    epsilon = c()
+    k = 0
+  } else if(!is.null(cps)) { # Pre-specified changepoints (ignore k_bar)
+    epsilon = cps
+    k = length(epsilon)-1;
   } else if(!fixed) {
+    k = k_bar + 1;
     # Choose number and location of change points
     while(k > k_bar || any(c(epsilon, l) - c(0, epsilon) < min_phase_length)) {
       k = rpois(1, lambda_1);
@@ -76,7 +79,7 @@ function(lambda_2=0.45, q=10, min_phase_length=1, k_bar=5, l=10,
       }
     }
   } else {
-    k = k - 1
+    k = k_bar
     if(spacing == 1) {
       epsilon = round(seq(round(l/(k+1)), l+1, length.out=(k+1)))
       epsilon = epsilon[-length(epsilon)]

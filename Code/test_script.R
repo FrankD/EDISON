@@ -11,4 +11,7 @@ test.data = lapply(1:100, simulateNetwork, l=10, net=test)
 test.data.array = sapply(test.data, function(x) x$sim_data, simplify='array')
 test.data.array = aperm(test.data.array, c(3,2,1))
 
-edison.test = EDISON.run(test.data.array)
+edison.options = defaultOptions()
+edison.options$cp.fixed = TRUE
+
+edison.test = EDISON.run(test.data.array[1:2,,], num.iter=100000, options=edison.options)

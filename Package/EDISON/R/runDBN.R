@@ -93,7 +93,7 @@ function(targetdata, preddata=NULL, q, n,
     options = defaultOptions()
   }
   
-  m = options$m
+  m = dim(targetdata)[1]
   dyn = options$dyn
   
   # Position of each time point in the data (designed for the algorithm)
@@ -117,7 +117,8 @@ function(targetdata, preddata=NULL, q, n,
 
   # A few tests :
   # The number of columns corresponds to n (timepoints) x m (repetitions)
-  if(dim(targetData)[2] != n*m) stop("Number of columns incompatible with n and m.\n")
+  if(dim(targetData)[2] != n) stop("Number of timepoints incompatible with n.\n")
+	if(dim(targetData)[1] != m) stop("Number of time series incompatible with m.\n")
 
   # List of genes analyzed :
   # Analyze all rows of targetData

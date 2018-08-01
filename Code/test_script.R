@@ -14,4 +14,4 @@ test.data.array = aperm(test.data.array, c(3,2,1))
 edison.options = defaultOptions()
 edison.options$cp.fixed = TRUE
 
-edison.test = EDISON.run(test.data.array[1:2,,], num.iter=100000, options=edison.options)
+edison.test = EDISON.run(test.data.array[1:2,,], num.iter=10000, options=edison.options)

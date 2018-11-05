@@ -124,8 +124,9 @@ function(x, y, S, B, Sig2, q,
     }
       
     ## Compute the projection matrix with the current edge ("Pxl")
-    Pxl = computePx(length(y.temp), x.temp[,which(S.temp == 1)], 
-                      delta2[segment])
+    Pxl = computePx(length(y.temp), 
+                    x.temp[,which(S.temp == 1), drop=FALSE], 
+                    delta2[segment])
 
     S.proposal.seg = S.temp
     
@@ -144,7 +145,8 @@ function(x, y, S, B, Sig2, q,
     S.proposal[segment,] = S.proposal.seg
     
     ## Compute the projection matrix with a modified edge ("Pxl modified")
-    Pxlm = computePx(length(y.temp), x.temp[,which(S.proposal.seg == 1)], 
+    Pxlm = computePx(length(y.temp), 
+                     x.temp[,which(S.proposal.seg == 1), drop=FALSE], 
                      delta2[segment])
      
     likelihood.temp = CalculateLikelihoodRatio(gamma0, y.temp, Pxlm, Pxl, v0, 

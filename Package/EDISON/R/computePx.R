@@ -23,9 +23,12 @@ function(len, x, delta2){
   #        x, the observations of X in the corresponding state
   #        delta2.
   # OUTPUT: the projection matrix Px.
-
+  
   if(prod(dim(x))>0) {
-    moins = (delta2/(delta2+1))* x%*%pseudoinverse(t(x)%*%x)%*%t(x)
+    #moins = (delta2/(delta2+1))* x%*%pseudoinverse(t(x)%*%x)%*%t(x)
+    moins = (delta2/(delta2+1))* tcrossprod(
+      tcrossprod(x,chol2inv(chol(crossprod(x)))),
+      x)
   } else {
     moins = matrix(0,len,len)
   }

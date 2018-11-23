@@ -27,9 +27,6 @@ This function calculates the ratio of the binomial information sharing prior
 with the proposed new hyperparameter values, and the binomial prior with the
 current hyperparameter values.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For information about the binomial information sharing prior,
 see:
@@ -44,4 +41,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{BinoHyperMove}}
 }
-
+\author{
+Frank Dondelinger
+}

@@ -22,9 +22,6 @@ The sampled sigma squared values.
 This function samples the initial values for the sigma squared variance from
 the inverse gamma prior.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For more information about the model, see:
 
@@ -32,4 +29,6 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-
+\author{
+Sophie Lebre
+}

@@ -4,8 +4,8 @@
 \alias{updateSigMulti}
 \title{Update sigma squared variances.}
 \usage{
-updateSigMulti(phase, X, Y, E, Sall, Ball, Sig2, Mphase, alphad2, betad2, v0,
-  gamma0)
+updateSigMulti(phase, X, Y, E, Sall, Ball, Sig2, Mphase, alphad2, betad2,
+  v0, gamma0)
 }
 \arguments{
 \item{phase}{Current segment.}
@@ -39,9 +39,6 @@ The new samples sigma squared values.
 This function samples new values for the sigma squared variances, given the
 current network structure. A multivariate distribution is assumed.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For more information about the model, see:
 
@@ -52,4 +49,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{updateSigSolo}}
 }
-
+\author{
+Sophie Lebre
+}

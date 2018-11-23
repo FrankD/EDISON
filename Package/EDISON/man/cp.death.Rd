@@ -46,11 +46,6 @@ changepoint death move.} \item{alpha}{The acceptance ratio of the move.}
 This function makes a changepoint death move, possibly removing a
 changepoint.
 }
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
 \references{
 For more information about the different changepoint moves, see:
 
@@ -61,4 +56,8 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{cp.birth}}, \code{\link{cp.shift}}
 }
+\author{
+Sophie Lebre
 
+Frank Dondelinger
+}

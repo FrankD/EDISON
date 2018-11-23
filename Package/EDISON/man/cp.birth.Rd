@@ -44,11 +44,6 @@ the new changepoint.} \item{k}{Hyperparameter.}
 \description{
 This function makes a changepoint birth move, possibly adding a changepoint.
 }
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
 \references{
 For more information about the different changepoint moves, see:
 
@@ -59,4 +54,8 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{cp.death}}, \code{\link{cp.shift}}
 }
+\author{
+Sophie Lebre
 
+Frank Dondelinger
+}

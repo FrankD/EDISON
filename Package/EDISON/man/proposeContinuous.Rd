@@ -30,10 +30,9 @@ param = runif(1, 0, 1)
 new.param = proposeContinuous(param, 0.1, 1)
 
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{ProposeDiscrete}}
 }
-
+\author{
+Frank Dondelinger
+}

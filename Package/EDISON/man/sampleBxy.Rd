@@ -22,9 +22,6 @@ The regression parameters.
 This function samples the regression coefficients given the current state of
 the MCMC simulation.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For details of the regression model, see:
 
@@ -32,4 +29,6 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-
+\author{
+Sophie Lebre
+}

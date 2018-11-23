@@ -7,7 +7,8 @@
 simulateNetwork(l = 100, min_phase_length = 10, k_bar = 10, q = 10,
   lambda_2 = 0.45, noise = 0.25, net = NULL, lambda_3 = 2,
   spacing = 0, gauss_weights = FALSE, same = FALSE,
-  changes = "sequential", fixed = FALSE, cps = NULL, saveFile = NULL)
+  changes = "sequential", fixed = FALSE, cps = NULL,
+  saveFile = NULL)
 }
 \arguments{
 \item{l}{Length of the time series.}
@@ -45,10 +46,11 @@ changes at segment i are applied to segment i-1), \code{'hierarchical'} if
 the changes happen with respect to a hypernetwork (i.e. changes at segment i
 are applied to segment 0).}
 
-\item{fixed}{\code{T} if the changepoint locations are fixed, \code{F} if
-they should be sampled.}
+\item{fixed}{\code{TRUE} if the number changepoint locations is fixed, 
+\code{FALSE} if it should be sampled.}
 
-\item{cps}{Changepoint locations (if they are fixed).}
+\item{cps}{Changepoint locations (if they are fixed), e.g. 
+\code{cps=c(10,20)} creates changepoints at \code{t=10} and \code{t=20}.}
 
 \item{saveFile}{If not \code{NULL}, indicates the filename for saving the
 output in R data format.}
@@ -93,10 +95,9 @@ network = generateNetwork(l=50, q=15, fixed=TRUE, k_bar=4)
 dataset = simulateNetwork(net=network)
 
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{generateNetwork}}
 }
-
+\author{
+Frank Dondelinger
+}

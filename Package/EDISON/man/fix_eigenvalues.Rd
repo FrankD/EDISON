@@ -24,10 +24,9 @@ This function ensures that the eigenvalues of the network structure matrix
 are smaller or equal to 1, thereby ensuring stationarity of the regression.
 This is done by removing edges at random until the condition is satisfied.
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{generateNetwork}}
 }
-
+\author{
+Frank Dondelinger
+}

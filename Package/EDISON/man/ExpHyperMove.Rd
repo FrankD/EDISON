@@ -31,9 +31,6 @@ move, 3 for a level-2 hyperparameter move.}
 This function tries to make a level-1 or level-2 hyperparameter move for the
 exponential prior
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For information about the exponential information sharing prior,
 see:
@@ -48,4 +45,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{ExpHyperRatioTarget}}
 }
-
+\author{
+Frank Dondelinger
+}

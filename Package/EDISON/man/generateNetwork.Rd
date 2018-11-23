@@ -5,8 +5,9 @@
 \title{Generate a random network.}
 \usage{
 generateNetwork(lambda_2 = 0.45, q = 10, min_phase_length = 1,
-  k_bar = 5, l = 10, lambda_3 = 2, spacing = 1, gauss_weights = TRUE,
-  same = FALSE, change_method = "sequential", fixed = FALSE, cps = NULL)
+  k_bar = 5, l = 10, lambda_3 = 2, spacing = 1,
+  gauss_weights = TRUE, same = FALSE, change_method = "sequential",
+  fixed = FALSE, cps = NULL)
 }
 \arguments{
 \item{lambda_2}{Average number of parents for each node in the network
@@ -17,7 +18,7 @@ generateNetwork(lambda_2 = 0.45, q = 10, min_phase_length = 1,
 \item{min_phase_length}{Minimum segment length.}
 
 \item{k_bar}{Maximum number of changepoints. If \code{fixed=TRUE}, this is
-equal to the number of changepoints.}
+equal to the number of changepoints. Set \code{k_bar=0} for no changepoints.}
 
 \item{l}{Length of the time series.}
 
@@ -38,8 +39,8 @@ changes), \code{0} otherwise.}
 \code{'hierarchical'} if the changes happen with respect to a hypernetwork
 (i.e. changes at segment i are applied to segment 0).}
 
-\item{fixed}{\code{T} if the changepoint locations are fixed, \code{F} if
-they should be sampled.}
+\item{fixed}{\code{TRUE} if the number changepoint locations is fixed, 
+\code{FALSE} if it should be sampled.}
 
 \item{cps}{Changepoint locations (if they are fixed).}
 }
@@ -70,10 +71,9 @@ network = generateNetwork(l=50, q=15, fixed=TRUE, k_bar=4)
 dataset = simulateNetwork(net=network)
 
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{simulateNetwork}}
 }
-
+\author{
+Frank Dondelinger
+}

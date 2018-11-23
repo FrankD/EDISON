@@ -7,8 +7,6 @@
 #'
 #' @param gamma0 Hyperparameter.
 #' @param y Target data.
-#' @param Pxlm Projection matrix with modified edge.
-#' @param Pxl Original projection matrix.
 #' @param x.orig The original observation adta
 #' @param x.new The edge-modifed observation data.
 #' @param v0 Hyperparameter.

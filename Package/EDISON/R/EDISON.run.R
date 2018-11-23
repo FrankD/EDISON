@@ -64,7 +64,7 @@ function(input, output.file="EDISON.output",
                        prior.params=NULL, options=NULL, fixed.edges=NULL) {
 
   if(is.matrix(input)) {
-    data = as.array(input, dim=c(1, dim(input)))
+    data = array(input, dim=c(1, dim(input)))
   } else if(is.array(input)) {
     data = input
   } else if(is.character(input)) {
@@ -80,6 +80,7 @@ function(input, output.file="EDISON.output",
 
   # Number of variables
   q = dim(data)[3]
+
 
   if(is.null(options)) options = defaultOptions()
   

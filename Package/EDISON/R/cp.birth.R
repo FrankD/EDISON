@@ -237,7 +237,7 @@ cp.birth <-
         if(!newRight){
           ## Update the phase to the left of the new CP (in newB)
           if(nbVarMax > 1){
-            newSig2[poskl] = sampleSig2(yL,PxL,v0,gamma0)
+            newSig2[poskl] = sampleSig2(yL, xxL, v0, gamma0, delta2)
             newSig2[poskl+1] = Sig2all[poskl]
             Sig2all = newSig2
             Sig2 = newSig2[poskl]
@@ -250,7 +250,7 @@ cp.birth <-
         } else {
           ## Update the phase to the right of the new CP (in newB)
           if(nbVarMax > 1){
-            newSig2[poskl+1] = sampleSig2(yR, PxR, v0, gamma0)
+            newSig2[poskl+1] = sampleSig2(yR, xxR, v0, gamma0, delta2)
             newSig2[poskl] = Sig2all[poskl]
             Sig2all = newSig2
             Sig2 = newSig2[poskl]

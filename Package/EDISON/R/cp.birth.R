@@ -144,12 +144,6 @@ cp.birth <-
       
       delta2 = sampleDelta2(poskl, x2, q, B, S, Sig2, alphad2, betad2)
       
-      # Compute projection of the matrices required for the computation 
-      # of the acceptation probability alpha
-      PxL = computePx(length(yL), as.matrix(xL[,which(sL == 1)]), delta2)
-      PxR = computePx(length(yR), as.matrix(xR[,which(sR == 1)]), delta2)
-      Px2 = computePx(length(y2), as.matrix(x2[,which(Sold == 1)]), delta2)
-      
       prior_ratio = 1;
       proposal.ratio = 1; 
       
@@ -205,11 +199,15 @@ cp.birth <-
       
       pp.ratio = (prior_ratio*proposal.ratio) 
       
+
+      xxL = as.matrix(xL[,which(sL == 1)])
+      xxR = as.matrix(xR[,which(sR == 1)])
+      xx2 = as.matrix(x2[,which(Sold == 1)])
       alpha = bp.computeAlpha(1, sum(newS)-1, s, Mphase[E[poskl]], 
                               Mphase[estar], Mphase[E[poskl+1]], yL, 
-                              PxL, yR, PxR, y2, Px2, D, delta2, q, 
+                              xxL, yR, xxR, y2, xx2, D, delta2, q, 
                               smax, v0, gamma0, pp.ratio)
-      
+
       ## Sample u to conclude either to  acceptation or to rejection
       u = runif(1,0,1)
       

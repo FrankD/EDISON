@@ -21,10 +21,6 @@ CalculateLikelihoodRatio(x.new, x.orig, y, gamma0, delta2, v0, dir)
 
 \item{dir}{Direction of the change: 1 = Added an edge. 2 = Removed an edge.
 0 = No change.}
-
-\item{Pxlm}{Projection matrix with modified edge.}
-
-\item{Pxl}{Original projection matrix.}
 }
 \value{
 Returns the likelihood ratio.

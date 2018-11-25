@@ -4,16 +4,18 @@
 \alias{sampleSig2}
 \title{Sample initial sigma squared.}
 \usage{
-sampleSig2(y, Px, v0, gamma0)
+sampleSig2(y, x, v0, gamma0, delta2)
 }
 \arguments{
-\item{y}{Input data.}
+\item{y}{Target data.}
 
-\item{Px}{Projection matrix.}
+\item{x}{Prediction data.}
 
 \item{v0}{Inverse gamma prior hyperparameter.}
 
 \item{gamma0}{Inverse gamma prior hyperparameter.}
+
+\item{delta2}{Hyperparameter.}
 }
 \value{
 The sampled sigma squared values.

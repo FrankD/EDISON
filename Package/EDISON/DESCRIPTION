@@ -19,6 +19,7 @@ Suggests:
 Depends:
     corpcor,
     MASS,
+    magrittr,
     Rcpp,
     RcppArmadillo
 Packaged: 2016-03-30 11:33:10 UTC; frankd

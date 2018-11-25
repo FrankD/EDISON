@@ -19,50 +19,57 @@
 #' @export calculateEdgeProbabilitiesTimePoints
 calculateEdgeProbabilitiesTimePoints <- 
   function(network.samples, cps, numNodes) {
-  sampled = network.samples[[1]]$sampled 
-  numSegs = length(cps) - 1
-  
-  segs = 2:cps[length(cps)]
-  
-  prob.networks = list() 
-  
-  for(seg in 1:length(segs)) {
-    prob.networks[[seg]] = matrix(0, numNodes, numNodes)
-  }
-  
-  for(sample.i in 1:length(sampled)) {
-    for(target in 1:numNodes) {
-      cps.temp = network.samples[[target]]$cp_samples[sample.i,]
-      max.cp   = length(cps.temp) - 1
-      cps.temp = cps.temp[cps.temp > 0]
-      
-      segs.temp = 2:cps.temp[length(cps.temp)]; seg = 1
-      
-      for(t in 1:length(segs.temp)) {
-        
-        if(t == cps.temp[seg+1]) {
-          seg = seg + 1
-        }
-        
-        segs.temp[t] = seg
-      } 
-      
-      target.net.temp = 
-        matrix(network.samples[[target]]$edge_samples[sample.i,],
-               numNodes+1, max.cp)
-      target.net.temp = (abs(target.net.temp) > 0)*1
-      
-      for(seg.i in 1:length(segs)) {
-        prob.networks[[seg.i]][,target] = prob.networks[[seg.i]][,target] + 
-          target.net.temp[1:numNodes, segs.temp[seg.i]] 
-      }
-    } 
-  }
-  
-  for(seg.i in 1:length(segs)) {
-    prob.networks[[seg.i]] = prob.networks[[seg.i]] / 
-      length(sampled)
-  }
-  
+
+  edge_counts <- lapply(seq_len(numNodes), function(i) {
+
+    cp_samples <- network.samples[[i]]$cp_samples
+    edge_samples <- network.samples[[i]]$edge_samples
+    
+    # Expand the <1000 x k> cp_samples to <1000 x n> matrix where each row indicates the changepoint
+    # segement a timepoint belongs to 
+    timepoint_samples <- apply(cp_samples, 1, function(row) {
+      seg.range <- diff(row[row > 0])
+      c(1, rep(seq_along(seg.range), seg.range))
+    })
+    
+    # Expand the <1000 x (q+1)*(k-1)> edge_samples to <1000 x q x n> matrix where each sub-matrix is
+    # the edge coefficients between i and j \in q at each t \in n.
+    edge_coeffs <- lapply(seq_len(nrow(edge_samples)),
+                          function(j) matrix(edge_samples[j,], numNodes + 1)[1:numNodes, timepoint_samples[,j]])
+    
+    # Sum the number of non-zero coefficients, i.e., number of edges.
+    sumNonZerosMatrices(edge_coeffs)
+
+  })
+
+  # Get probabilities from counts.
+  prob.networks <- edge_counts %>%
+    simplify2array(.) %>%
+    divide_by(length(network.samples[[1]]$sampled)) %>%
+    aperm(., c(2, 1, 3))
+
   return(prob.networks)
 }
+
+
+Rcpp::cppFunction('
+NumericMatrix sumNonZerosMatrices(List data) {
+  NumericMatrix tmp = as<NumericMatrix>(data[1]);
+  int nrow = tmp.nrow();
+  int ncol = tmp.ncol();
+  
+  NumericMatrix ret(nrow, ncol);
+  for (int i = 0; i < data.size(); ++i) {
+    
+    NumericMatrix mat = as<NumericMatrix>(data[i]);
+    
+    for (int j = 0; j < nrow; ++j) {
+      for (int k = 0; k < ncol; ++k) {
+        ret(j, k) += ((mat(j, k) != 0) * 1);
+      }
+    }
+    
+  }
+  
+  return ret;
+}')

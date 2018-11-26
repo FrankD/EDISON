@@ -47,7 +47,7 @@ calculateEdgeProbabilitiesTimePoints <-
     simplify2array(.) %>%
     divide_by(length(network.samples[[1]]$sampled)) %>%
     aperm(., c(2, 1, 3))
-
+  
   return(prob.networks)
 }
 

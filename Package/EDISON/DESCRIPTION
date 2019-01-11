@@ -19,9 +19,7 @@ Suggests:
 Depends:
     corpcor,
     MASS,
-    magrittr,
-    Rcpp,
-    RcppArmadillo
+    magrittr
 Packaged: 2016-03-30 11:33:10 UTC; frankd
 Repository: CRAN
 Date/Publication: 2016-03-30 11:24:38

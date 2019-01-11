@@ -40,14 +40,7 @@ function(network.samples, cps=NULL) {
   
   numNodes = length(network.samples) - 1
 
-  res = calculateEdgeProbabilitiesTimePoints(network.samples, cps, numNodes)
-  
-  # convert to list of matrices
-  prob.networks = vector('list', nrow(res))
-  for (i in 1:length(prob.networks)) {
-    prob.networks[[i]] <- res[i,,]
-  }
-
+  prob.networks = calculateEdgeProbabilitiesTimePoints(network.samples, cps, numNodes)
   prob.networks.segs = 
     calculateEdgeProbabilitiesSegs(prob.networks, cps, numNodes)
   

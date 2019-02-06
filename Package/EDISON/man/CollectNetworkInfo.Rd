@@ -4,7 +4,8 @@
 \alias{CollectNetworkInfo}
 \title{Collects all the network information in one list.}
 \usage{
-CollectNetworkInfo(Sall, Eall, prior.params, posPhase, target, q, self.loops, k)
+CollectNetworkInfo(Sall, Eall, prior.params, posPhase, target, q,
+  self.loops, k)
 }
 \arguments{
 \item{Sall}{Structure of all segments. A list of length \code{q}, where each
@@ -45,4 +46,3 @@ hyperparameters for the information sharing priors.
 \author{
 Frank Dondelinger
 }
-

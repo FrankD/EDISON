@@ -18,8 +18,9 @@ Suggests:
     testthat
 Depends:
     corpcor,
-    MASS
+    MASS,
+    magrittr
 Packaged: 2016-03-30 11:33:10 UTC; frankd
 Repository: CRAN
 Date/Publication: 2016-03-30 11:24:38
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.1

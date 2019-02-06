@@ -4,16 +4,18 @@
 \alias{sampleSig2}
 \title{Sample initial sigma squared.}
 \usage{
-sampleSig2(y, Px, v0, gamma0)
+sampleSig2(y, x, v0, gamma0, delta2)
 }
 \arguments{
-\item{y}{Input data.}
+\item{y}{Target data.}
 
-\item{Px}{Projection matrix.}
+\item{x}{Prediction data.}
 
 \item{v0}{Inverse gamma prior hyperparameter.}
 
 \item{gamma0}{Inverse gamma prior hyperparameter.}
+
+\item{delta2}{Hyperparameter.}
 }
 \value{
 The sampled sigma squared values.
@@ -22,9 +24,6 @@ The sampled sigma squared values.
 This function samples the initial values for the sigma squared variance from
 the inverse gamma prior.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For more information about the model, see:
 
@@ -32,4 +31,6 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-
+\author{
+Sophie Lebre
+}

@@ -5,13 +5,13 @@
 \title{Wrapper function for starting an MCMC simulation}
 \usage{
 EDISON.run(input, output.file = "EDISON.output",
-  information.sharing = "poisson", num.iter = 10000, prior.params = NULL,
-  options = NULL, fixed.edges = NULL)
+  information.sharing = "poisson", num.iter = 10000,
+  prior.params = NULL, options = NULL, fixed.edges = NULL)
 }
 \arguments{
 \item{input}{Input data. Either a filename pointing to an R data file
-containing the results of \code{\link{simulateNetwork}}, or a NumTimePoints
-by NumNodes matrix.}
+containing the results of \code{\link{simulateNetwork}}, a NumTimePoints
+by NumNodes matrix, or a NumTimeSeries by NumTimePoints by NumNodes array.}
 
 \item{output.file}{Where to save the output of the MCMC simulation.}
 
@@ -69,9 +69,6 @@ options$save.file = TRUE
 #                  options=options)
 
 }
-\author{
-Sophie Lebre Frank Dondelinger
-}
 \references{
 For details on the model and MCMC simulation, see:
 
@@ -82,4 +79,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{runDBN}}
 }
-
+\author{
+Sophie Lebre Frank Dondelinger
+}

@@ -35,4 +35,3 @@ cps = calculateCPProbabilities(result)
 \author{
 Frank Dondelinger
 }
-

@@ -25,9 +25,6 @@ hyperparameter value and the proposed new hyperparameter value.
 This function calculates the acceptance ratio of a level-1 hyperparameter
 move for a given target node.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For information about the exponential information sharing prior,
 see:
@@ -42,4 +39,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{ExpHyperMove}}
 }
-
+\author{
+Frank Dondelinger
+}

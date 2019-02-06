@@ -64,11 +64,6 @@ samples, changepoint samples and hyperparameter samples. For details, see
 This function initialises the variabes for the MCMC simulation, runs the
 simulation and returns the output.
 }
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
 \references{
 For more information about the MCMC simulations, see:
 
@@ -79,4 +74,8 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{output}}
 }
+\author{
+Sophie Lebre
 
+Frank Dondelinger
+}

@@ -40,9 +40,7 @@ function(network.samples, cps=NULL) {
   
   numNodes = length(network.samples) - 1
 
-  prob.networks = 
-    calculateEdgeProbabilitiesTimePoints(network.samples, cps, numNodes)
-
+  prob.networks = calculateEdgeProbabilitiesTimePoints(network.samples, cps, numNodes)
   prob.networks.segs = 
     calculateEdgeProbabilitiesSegs(prob.networks, cps, numNodes)
   

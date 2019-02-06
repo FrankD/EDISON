@@ -22,4 +22,3 @@ close to 0.25.
 \author{
 Frank Dondelinger
 }
-

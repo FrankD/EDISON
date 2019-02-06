@@ -24,12 +24,11 @@ edge probabilities of the network at this timepoint.
 This function calculates the marginal posterior edge probabilities of the
 network at each timepoint.
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{calculateEdgeProbabilities}},
 
 \code{\link{calculateEdgeProbabilitiesSegs}}
 }
-
+\author{
+Frank Dondelinger
+}

@@ -28,11 +28,6 @@ samples for the networks, changepoints and hyperparameters}
 This function executes the main loop of the MCMC simulation, making the
 different moves and recording samples.
 }
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
 \references{
 For more information about the MCMC simulations, see:
 
@@ -43,4 +38,8 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{runDBN}}
 }
+\author{
+Sophie Lebre
 
+Frank Dondelinger
+}

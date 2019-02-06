@@ -123,10 +123,6 @@ function(x, y, S, B, Sig2, q,
       lambda[segment] = rgamma(1, shape=k + alphalbd, rate=1 + betalbd)
     }
       
-    ## Compute the projection matrix with the current edge ("Pxl")
-    Pxl = computePx(length(y.temp), 
-                    x.temp[,which(S.temp == 1), drop=FALSE], 
-                    delta2[segment])
 
     S.proposal.seg = S.temp
     
@@ -144,18 +140,18 @@ function(x, y, S, B, Sig2, q,
     
     S.proposal[segment,] = S.proposal.seg
     
-    ## Compute the projection matrix with a modified edge ("Pxl modified")
-    Pxlm = computePx(length(y.temp), 
-                     x.temp[,which(S.proposal.seg == 1), drop=FALSE], 
-                     delta2[segment])
-     
-    likelihood.temp = CalculateLikelihoodRatio(gamma0, y.temp, Pxlm, Pxl, v0, 
-                                                 delta2[segment], dir)
-
- 
     # Ratio of (segment) data likelihoods
+    likelihood.temp = CalculateLikelihoodRatio(
+      x.new = x.temp[,which(S.proposal.seg == 1), drop=FALSE],
+      x.orig = x.temp[,which(S.temp == 1), drop=FALSE],
+      y = y.temp,
+      gamma0 = gamma0,
+      delta2 = delta2[segment],
+      v0 = v0,
+      dir = dir
+    )
+    
     likelihood.ratio = likelihood.ratio * likelihood.temp
- 
   }
     
   lambda = lambda[network.info$global.mapping[network.info$target,]]

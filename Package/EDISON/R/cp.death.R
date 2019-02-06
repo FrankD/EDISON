@@ -104,20 +104,6 @@ function(Eall, Sall, Ball, Sig2all, X, Y, D, GLOBvar, HYPERvar,
                         Ball[[target]], Sall[[target]], Sig2, 
                         alphad2, betad2)
 
-  # Compute projection of the matrices required for the computation 
-  # of the acceptance probability alpha
-  Px2 = computePx(length(y2), 
-                  as.matrix(x2[,
-                    which(Sall[[target]][poskstar-1+newRight,] == 1)]), 
-                  delta2) 
-  PxL = computePx(length(yL), 
-                  as.matrix(xL[,
-                    which(Sall[[target]][poskstar-1,] == 1)]), 
-                  delta2)
-  PxR = computePx(length(yR), 
-                  as.matrix(xR[,
-                    which(Sall[[target]][poskstar,] == 1)]), 
-                  delta2)
 
   prior_ratio = 1;
   proposal.ratio = 1;
@@ -165,9 +151,12 @@ function(Eall, Sall, Ball, Sig2all, X, Y, D, GLOBvar, HYPERvar,
   pp.ratio = (prior_ratio*proposal.ratio)
 
   ## Compute the acceptance probability alpha
+  xx2 = as.matrix(x2[, which(Sall[[target]][poskstar-1+newRight,] == 1)])
+  xxL = as.matrix(xL[, which(Sall[[target]][poskstar-1,] == 1)])
+  xxR = as.matrix(xR[, which(Sall[[target]][poskstar,] == 1)])
   alpha = bp.computeAlpha(-1, sum(Sall[[target]][poskstar-1+newRight,])-1, s-1, 
                    Mphase[E[poskstar-1]], Mphase[estar], Mphase[E[poskstar+1]], 
-                   yL, PxL, yR, PxR, y2, Px2, D, delta2, q, smax, v0, gamma0, 
+                   yL, xxL, yR, xxR, y2, xx2, D, delta2, q, smax, v0, gamma0, 
                    1/pp.ratio)
   
   ## Sample u to decide on acceptance

@@ -29,9 +29,6 @@ New sample of delta squared.
 \description{
 This function samples the signal-to-noise hyperparameter delta squared.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For details of the sampling, see:
 
@@ -39,4 +36,6 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-
+\author{
+Sophie Lebre
+}

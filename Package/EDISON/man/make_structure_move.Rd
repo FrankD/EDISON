@@ -4,8 +4,8 @@
 \alias{make_structure_move}
 \title{Makes a structure move.}
 \usage{
-make_structure_move(x, y, S, B, Sig2, q, qmax, network.info, method, Mphase, E,
-  fixed.edges, HYPERvar)
+make_structure_move(x, y, S, B, Sig2, q, qmax, network.info, method,
+  Mphase, E, fixed.edges, HYPERvar)
 }
 \arguments{
 \item{x}{Response data.}
@@ -51,9 +51,6 @@ accepted, \code{0} otherwise.}
 \description{
 This function makes a network structure move.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For more information about the MCMC moves, see:
 
@@ -61,4 +58,6 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-
+\author{
+Frank Dondelinger
+}

@@ -18,9 +18,6 @@ Returns the ratio [prior of new network]/[prior of old network].
 This function calculates the ratio of exponential network information
 sharing prior probabilities.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For information about the exponential information sharing prior,
 see:
@@ -35,4 +32,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{NetworkProbExp}}, \code{\link{CalculatePriorRatio}}
 }
-
+\author{
+Frank Dondelinger
+}

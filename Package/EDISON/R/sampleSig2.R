@@ -4,10 +4,11 @@
 #' the inverse gamma prior.
 #' 
 #' 
-#' @param y Input data.
-#' @param Px Projection matrix.
+#' @param y Target data.
+#' @param x Prediction data.
 #' @param v0 Inverse gamma prior hyperparameter.
 #' @param gamma0 Inverse gamma prior hyperparameter.
+#' @param delta2 Hyperparameter.
 #' @return The sampled sigma squared values.
 #' @author Sophie Lebre
 #' @references For more information about the model, see:
@@ -17,9 +18,9 @@
 #' gradually time-varying structure", Machine Learning.
 #' @export sampleSig2
 sampleSig2 <-
-function(y, Px, v0, gamma0) {
+function(y, x, v0, gamma0, delta2) {
   out = rinvgamma(1, shape=v0/2 + length(y)/2, 
-                  scale = (gamma0 + t(y) %*% Px %*% y)/2)
+                  scale = (gamma0 + calculateResidual(x, y, delta2))/2)
   return(out)
 }
 

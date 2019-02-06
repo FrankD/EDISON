@@ -21,6 +21,9 @@ Returns the ratio of [prior of new network]/[prior of old network].
 This function calculates the ratio of binomial prior probabilities of two
 networks.
 }
+\seealso{
+\code{\link{NetworkProbBino}}, \code{\link{CalculatePriorRatio}}
+}
 \author{
 For information about the binomial information sharing prior, see:
 
@@ -31,7 +34,3 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-\seealso{
-\code{\link{NetworkProbBino}}, \code{\link{CalculatePriorRatio}}
-}
-

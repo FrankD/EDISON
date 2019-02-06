@@ -4,8 +4,8 @@
 \alias{bp.computeAlpha}
 \title{Computes the acceptance ratio of two changepoint configurations.}
 \usage{
-bp.computeAlpha(birth, lNew, kminus, Ekl, Estar, Ekr, yL, PxL, yR, PxR, y2, Px2,
-  D, delta2, q, smax, v0, gamma0, prior_ratio = 1)
+bp.computeAlpha(birth, lNew, kminus, Ekl, Estar, Ekr, yL, xL, yR, xR, y2,
+  x2, D, delta2, q, smax, v0, gamma0, prior_ratio = 1)
 }
 \arguments{
 \item{birth}{\code{1} for a changepoint birth move, \code{-1} for a
@@ -24,15 +24,15 @@ changepoint death move.}
 
 \item{yL}{Response data (left).}
 
-\item{PxL}{Projection matrix (left).}
+\item{xL}{Prediction data (left).}
 
 \item{yR}{Response data (right).}
 
-\item{PxR}{Projection matrix (right).}
+\item{xR}{Prediction matrix (right).}
 
 \item{y2}{Response data (both).}
 
-\item{Px2}{Projection matrix (both).}
+\item{x2}{Prediction data (both).}
 
 \item{D}{Hyperparameters for the number of edges in each segment.}
 
@@ -53,9 +53,6 @@ ratio).}
 This function computes the acceptance ratio of two changepoint
 configurations with networks in a changepoint birth or death move.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For more information about the model, see:
 
@@ -66,4 +63,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{cp.birth}}, \code{\link{cp.death}}
 }
-
+\author{
+Sophie Lebre
+}

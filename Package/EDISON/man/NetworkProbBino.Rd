@@ -22,9 +22,6 @@ binomial prior.
 This function calculates the (log) probability of the network segments using
 the binomial information sharing prior.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For information about the binomial information sharing prior,
 see:
@@ -39,4 +36,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{NetworkRatioBino}}, \code{\link{CalculatePriorRatio}}
 }
-
+\author{
+Frank Dondelinger
+}

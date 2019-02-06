@@ -4,7 +4,8 @@
 \alias{updateSigSolo}
 \title{Sample new values for sigma squared.}
 \usage{
-updateSigSolo(X, Y, E, Sall, Ball, Sig2, Mphase, alphad2, betad2, v0, gamma0)
+updateSigSolo(X, Y, E, Sall, Ball, Sig2, Mphase, alphad2, betad2, v0,
+  gamma0)
 }
 \arguments{
 \item{X}{Input response data.}
@@ -36,9 +37,6 @@ Returns the new samples sigma squared values.
 This function samples new values for the sigma squared variances, given the
 current network structure. A univariate distribution is assumed.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For more information about the model, see:
 
@@ -49,4 +47,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{updateSigMulti}}
 }
-
+\author{
+Sophie Lebre
+}

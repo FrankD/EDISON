@@ -5,8 +5,8 @@
 #' 
 #' 
 #' @param input Input data. Either a filename pointing to an R data file
-#' containing the results of \code{\link{simulateNetwork}}, or a NumTimePoints
-#' by NumNodes matrix.
+#' containing the results of \code{\link{simulateNetwork}}, a NumTimePoints
+#' by NumNodes matrix, or a NumTimeSeries by NumTimePoints by NumNodes array.
 #' @param output.file Where to save the output of the MCMC simulation.
 #' @param information.sharing Which information sharing prior to use:
 #' \code{'poisson'} for the Poisson prior (no information sharing),
@@ -63,19 +63,24 @@ function(input, output.file="EDISON.output",
                        information.sharing='poisson', num.iter=10000, 
                        prior.params=NULL, options=NULL, fixed.edges=NULL) {
 
-  if(!is.matrix(input)) {
+  if(is.matrix(input)) {
+    data = array(input, dim=c(1, dim(input)))
+  } else if(is.array(input)) {
+    data = input
+  } else if(is.character(input)) {
     test = NULL  
     load(file=input)
     data=test$sim_data;
   } else {
-    data = input
+    stop('Input error: data is not in a recognizable format.')
   }
   
   # Time series length
   n = dim(data)[2]
 
   # Number of variables
-  q = dim(data)[1]
+  q = dim(data)[3]
+
 
   if(is.null(options)) options = defaultOptions()
   

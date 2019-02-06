@@ -4,20 +4,20 @@
 \alias{CalculateLikelihoodRatio}
 \title{Calculates the ratio of two likelihoods in a structure move.}
 \usage{
-CalculateLikelihoodRatio(gamma0, y, Pxlm, Pxl, v0, delta2, dir)
+CalculateLikelihoodRatio(x.new, x.orig, y, gamma0, delta2, v0, dir)
 }
 \arguments{
-\item{gamma0}{Hyperparameter.}
+\item{x.new}{The edge-modifed observation data.}
+
+\item{x.orig}{The original observation adta}
 
 \item{y}{Target data.}
 
-\item{Pxlm}{Projection matrix with modified edge.}
-
-\item{Pxl}{Original projection matrix.}
-
-\item{v0}{Hyperparameter.}
+\item{gamma0}{Hyperparameter.}
 
 \item{delta2}{Delta squared parameter (signal-to-noise).}
+
+\item{v0}{Hyperparameter.}
 
 \item{dir}{Direction of the change: 1 = Added an edge. 2 = Removed an edge.
 0 = No change.}
@@ -30,9 +30,6 @@ This function calculates the ratio of the liklihoods in a network structure
 move. The returned value is the ratio for the modification of one edge in
 one segment.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For more information about the hyperparameters and the
 functional form of the likelihood, see:
@@ -44,4 +41,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{CalculatePriorRatio}}
 }
-
+\author{
+Frank Dondelinger
+}

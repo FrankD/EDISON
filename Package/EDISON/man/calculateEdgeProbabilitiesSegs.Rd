@@ -26,12 +26,11 @@ marginal edge probabilities for that segment.
 This function calculates the marginal posterior probabilities for the edges
 in each network for the specified segments.
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{calculateEdgeProbabilities}},
 
 \code{\link{calculateEdgeProbabilitiesTimePoints}}
 }
-
+\author{
+Frank Dondelinger
+}

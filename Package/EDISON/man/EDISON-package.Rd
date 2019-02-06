@@ -2,8 +2,8 @@
 % Please edit documentation in R/EDISON-package.R
 \docType{package}
 \name{EDISON-package}
-\alias{EDISON}
 \alias{EDISON-package}
+\alias{EDISON}
 \title{Allows for network reconstruction and changepoint detection.}
 \description{
 This package runs an MCMC simulation to reconstruct networks from time
@@ -32,11 +32,6 @@ network = calculateEdgeProbabilities(result)
 
 
 }
-\author{
-Frank Dondelinger, Sophie Lebre
-
-Maintainer: Frank Dondelinger <fdondelinger.work@gmail.com>
-}
 \references{
 Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian
 networks with Bayesian regularization for inferring gene regulatory networks
@@ -48,5 +43,9 @@ non-homogeneous dynamic Bayesian networks", NIPS.
 \seealso{
 \code{\link[corpcor:corpcor-package]{corpcor}}
 }
-\keyword{package}
+\author{
+Frank Dondelinger, Sophie Lebre
 
+Maintainer: Frank Dondelinger <fdondelinger.work@gmail.com>
+}
+\keyword{package}

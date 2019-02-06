@@ -47,11 +47,6 @@ psrf.val = psrf(samples)
 
 
 }
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
 \references{
 Gelman and Rubin (1992) Inference from iterative simulation
 using multiple sequences, Statistical Science.
@@ -59,4 +54,8 @@ using multiple sequences, Statistical Science.
 \seealso{
 \code{\link{psrf_check}}, \code{\link{psrf_check_hyper}}
 }
+\author{
+Sophie Lebre
 
+Frank Dondelinger
+}

@@ -106,52 +106,21 @@ function(Eall, Sall, Ball, Sig2all, X, Y, GLOBvar,
     yRStar = Y[ Mphase[newCP]:(Mphase[E[poskstar+1]]-1) ]
     xRStar = X[ Mphase[newCP]:(Mphase[E[poskstar+1]]-1), ]
     
-    if(nbVarMax > 1){
-      
-      ## Update delta for the left phase
-      delta2 = sampleDelta2(poskstar-1, xL, q, Ball, Sall, 
-                            Sig2all[poskstar-1], alphad2, betad2)
-      
-      ## Compute projection of the matrices for the left phase
-      PxL = computePx(length(yL), as.matrix(xL[, which(Sall[poskstar-1,] == 1)]), 
-                      delta2)
-      PxLStar = computePx(length(yLStar), 
-                          as.matrix(xLStar[, which(Sall[poskstar-1,] == 1)]), 
-                          delta2)
-      
-      ## Update delta for the right phase     
-      delta2 = sampleDelta2(poskstar, xR, q, Ball, Sall, Sig2all[poskstar], 
-                            alphad2, betad2)
-      
-      ## Compute projection of the matrices for the right phase
-      PxR = computePx(length(yR), as.matrix(xR[, which(Sall[poskstar,] == 1)]), 
-                      delta2)
-      PxRStar = computePx(length(yRStar), 
-                          as.matrix(xRStar[, which(Sall[poskstar,] == 1)]), 
-                          delta2)
+
+    if (nbVarMax > 1) {
+      delta2.l = sampleDelta2(poskstar-1, xL, q, Ball, Sall, Sig2all[poskstar-1], alphad2, betad2)
+      delta2.r = sampleDelta2(poskstar, xR, q, Ball, Sall, Sig2all[poskstar], alphad2, betad2)
     } else {
-      ## Update delta for the left phase
-      delta2 = sampleDelta2(poskstar-1, xL, q, Ball, Sall, Sig2all, 
-                            alphad2, betad2)
-      ## Compute projection of the matrices for the left phase
-      PxL = computePx(length(yL), as.matrix(xL[, which(Sall[poskstar-1,] == 1)]), 
-                      delta2)
-      PxLStar = computePx(length(yLStar), 
-                          as.matrix(xLStar[, which(Sall[poskstar-1,] == 1)]), 
-                          delta2)
-      
-      ## Update delta for the right phase     
-      delta2 = sampleDelta2(poskstar, xR, q, Ball, Sall, Sig2all, 
-                            alphad2, betad2)
-      
-      ## Compute projection of the matrices for the right phase
-      PxR = computePx(length(yR), 
-                      as.matrix(xR[, which(Sall[poskstar,] == 1)]), 
-                      delta2)
-      PxRStar = computePx(length(yRStar), 
-                          as.matrix(xRStar[, which(Sall[poskstar,] == 1)]), 
-                          delta2)
+      delta2.l = sampleDelta2(poskstar-1, xL, q, Ball, Sall, Sig2all, alphad2, betad2)
+      delta2.r = sampleDelta2(poskstar, xR, q, Ball, Sall, Sig2all, alphad2, betad2)
     }
+
+    xxL = as.matrix(xL[, which(Sall[poskstar-1,] == 1)])
+    xxLStar = as.matrix(xLStar[, which(Sall[poskstar-1,] == 1)])
+    xxR = as.matrix(xR[, which(Sall[poskstar,] == 1)])
+    xxRStar = as.matrix(xRStar[, which(Sall[poskstar,] == 1)])
+
+
 
     ## Compute the logarithm of the Likelihood Ratio (LR)
     logLR=lgamma(((Mphase[newCP]-Mphase[E[poskstar-1]])+v0)/2)+
@@ -159,13 +128,13 @@ function(Eall, Sall, Ball, Sig2all, X, Y, GLOBvar,
       lgamma(((Mphase[E[poskstar]]-Mphase[E[poskstar-1]])+v0)/2)- 
       lgamma(((Mphase[E[poskstar+1]]-Mphase[E[poskstar]])+v0)/2)+ 
       ((Mphase[E[poskstar]]-Mphase[E[poskstar-1]])+v0)/2* 
-      log((gamma0+t(yL)%*%PxL%*%yL)/2)+
+      log((gamma0+calculateResidual(xxL, yL, delta2.l))/2)+
       ((Mphase[E[poskstar+1]]-Mphase[E[poskstar]])+v0)/2*
-      log((gamma0+t(yR)%*%PxR%*% yR)/2)-
+      log((gamma0+calculateResidual(xxR, yR, delta2.r))/2)-
       (((Mphase[newCP]-Mphase[E[poskstar-1]])+v0)/2)*
-      log((gamma0+t(yLStar)%*%PxLStar %*%yLStar)/2)-
+      log((gamma0+calculateResidual(xxLStar, yLStar, delta2.l))/2)+
       ((Mphase[E[poskstar+1]]-Mphase[newCP])+v0)/2*
-      log((gamma0+t(yRStar) %*% PxRStar%*%yRStar)/2)
+      log((gamma0+calculateResidual(xxRStar, yRStar, delta2.r))/2)
   
 
     ## New CP vector Estar

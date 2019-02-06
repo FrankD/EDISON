@@ -21,9 +21,6 @@ Returns the ratio [prior of new network]/[prior of old network].
 \description{
 This function calculates the ratio of the Poisson prior for two networks.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For more information on the network structure priors, see:
 
@@ -34,4 +31,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{CalculatePriorRatio}}
 }
-
+\author{
+Frank Dondelinger
+}

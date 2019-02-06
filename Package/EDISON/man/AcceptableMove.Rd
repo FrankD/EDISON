@@ -30,10 +30,9 @@ This function takes as input a new network proposal and checks that the
 proposal does not exceed the maximum number of parents for a node, and that
 there are no self loops (if self loops have been disallowed).
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{make_structure_move}}
 }
-
+\author{
+Frank Dondelinger
+}

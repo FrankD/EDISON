@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 *.pdf
+.DS_Store
+play/

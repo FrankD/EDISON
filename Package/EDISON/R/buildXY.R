@@ -23,13 +23,19 @@ function(targetData, predData, GLOBvar){
   target = GLOBvar$target
   bestPosMat = GLOBvar$bestPosMat
   ### end assignement ###
+  
+  # flatten target data
+  flat.targetData = t(apply(targetData, 3, c))
 
   # Read target data
-  Y = as.array(readDataTS(data=targetData, posI=target, t0=dyn, tf=n, m=m, n=n))
+  Y = as.array(readDataTS(data=flat.targetData, posI=target, t0=dyn, tf=n, m=m, n=n))
 
+  # flatten predictor data
+  flat.predData = t(apply(predData, 3, c))
+  
   # Read predictor data
   posTF = as.matrix(bestPosMat)[target,1:q]
-  dataTF = t(readDataTS(data=predData, posI=posTF, t0=0, tf=n-dyn, m=m, n=n))
+  dataTF = t(readDataTS(data=flat.predData, posI=posTF, t0=0, tf=n-dyn, m=m, n=n))
 
   ## Add a constant vector to the predictor data
   X = cbind(dataTF,array(1,length(dataTF[,1])))

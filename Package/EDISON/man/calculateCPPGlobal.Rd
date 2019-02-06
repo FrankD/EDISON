@@ -18,10 +18,9 @@ changepoint probabilities.
 This function calculates the global probability of a changepoint at each
 measured timepoint, using the node-specific probabilities.
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{calculateCPProbabilities}}
 }
-
+\author{
+Frank Dondelinger
+}

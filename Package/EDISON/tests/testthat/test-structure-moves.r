@@ -1,5 +1,6 @@
 context('structure-moves')
 
+
 dataset = simulateNetwork(l=30, cps=c(10,20))
 
 # Prepare for structure move
@@ -19,14 +20,13 @@ for(i in 3:dim(sim.data)[1]) {
   
 information.sharing='poisson'
 prior.params=NULL
-  
-data = sim.data
-  
+data = t(sim.data) %>% array(., dim=c(1, dim(.)))
+
 # Time series length
 n = dim(data)[2]
   
 # Number of variables
-q = dim(data)[1]
+q = dim(data)[3]
   
 ##### Important remark ####
 # if you know the changepoint position, and you want to run the procedure only for estimating the model within phases, 
@@ -40,7 +40,7 @@ self.loops = TRUE; k = 15; outputFile='.';
   
 nbCPinit=min(floor(n/2),5)
   
-m = options$m
+m = dim(targetdata)[1]
 dyn = options$dyn
   
 # Position of each time point in the data (designed for the algorithm)
@@ -58,8 +58,8 @@ predData = targetData
   
 # Standardise inputs to N(0,1)
 if(scaling){
-  targetData = t(scale(t(targetData)))
-  predData = t(scale(t(predData)))
+  targetdata = sweep(targetdata, 3, apply(targetdata, 3, mean))
+  targetdata = sweep(targetdata, 3, apply(targetdata, 3, sd), '/')
 }
   
 fixed.edges = matrix(-1, q, q)
@@ -72,31 +72,32 @@ if(ncol(targetData) != n*m) stop("Number of columns incompatible with n and m.\n
   
 # List of genes analyzed :
 # Analyze all rows of targetData
-posResponse = 1:nrow(targetData)
+posResponse = 1:dim(targetData)[3]
   
 # Names of predictors
 # Take rownames of predData
-predNames = row.names(predData)
+predNames = dimnames(predData)[[3]]
   
 # Names of targets
 # Take rownames of predData
-targetNames = row.names(targetData)
+targetNames = dimnames(targetData)[[3]]
   
 # Position of the predictor variables in the data for each response 
 # (matrix [nrow(targetData) x q]) 
 # By default all the predictors of predData are taken for each gene
-bestPosMat = matrix(1:q, nrow(targetData), q, byrow=TRUE)
+bestPosMat = matrix(1:q, q, q, byrow=TRUE)
   
 ### Create Global Variables used in all functions
-GLOBvar = list(n=n, m=m, p=1, q=q, qmax=options$maxTF, smax=options$maxCP, 
-                 dyn=options$dyn, 
-                 minPhase=minPhase, nbVarMax=nbVarMax, Mphase=Mphase, bestPosMat=bestPosMat, 
-                 niter=niter, target=NULL,predNames=predNames, targetNames=targetNames, 
-                 lmax=options$lmax, method=method, 
-                 prior.params=prior.params, self.loops=self.loops,
-                 burnin=options$burnin, psrf.check=options$psrf.check,
-                 pp.l1=options$pp.l1, pp.l2=options$pp.l2, hyper.fixed=options$hyper.fixed,
-                 cp.fixed=options$cp.fixed, fixed.edges=fixed.edges)
+GLOBvar = list(n=n, m=dim(targetData)[1], 
+               p=1, q=q, qmax=options$maxTF, smax=options$maxCP, 
+               dyn=options$dyn, 
+               minPhase=minPhase, nbVarMax=nbVarMax, Mphase=Mphase, bestPosMat=bestPosMat, 
+               niter=niter, target=NULL,predNames=predNames, targetNames=targetNames, 
+               lmax=options$lmax, method=method, 
+               prior.params=prior.params, self.loops=self.loops,
+               burnin=options$burnin, psrf.check=options$psrf.check,
+               pp.l1=options$pp.l1, pp.l2=options$pp.l2, hyper.fixed=options$hyper.fixed,
+               cp.fixed=options$cp.fixed, fixed.edges=fixed.edges)
   
 ### Create HyperParms Variables used in all functions
 HYPERvar = HyperParms(options)
@@ -334,4 +335,4 @@ test_that('rejected moves make no change',
 
 # Test output is not NULL (Generic Run Test) 
 test_that('output not null',
-          expect_that(is.null(EDISON.run(sim.data, num.iter=num.iter)), is_false()))
+          expect_that(is.null(EDISON.run(data, num.iter=num.iter)), is_false()))

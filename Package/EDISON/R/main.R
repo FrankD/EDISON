@@ -90,8 +90,8 @@ function(X, Y, initiation, GLOBvar, HYPERvar){
     if ((r %% (round(niter/20))) == 0) {
 	    cat(round(5 * r/(round(niter/20))), "% ")
         
-      if(GLOBvar$method != 'poisson')
-        print(round(HYPERvar$prior.params, digits=2))
+      #if(GLOBvar$method != 'poisson')
+      #  print(round(HYPERvar$prior.params, digits=2))
       
       if(i > 5000 && GLOBvar$psrf.check) {
         psrf_r = c()

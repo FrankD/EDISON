@@ -46,7 +46,7 @@ function(beta.proposed, beta.old, target.net, self.loops) {
   }
    
   # If there is only one segment, there is nothing to calculate
-  if(is.null(n.segs)) return(1) 
+  if(is.null(n.segs) || n.segs==1) return(1) 
   
   # Network segments h+1
   target.net.shifted = target.net[2:n.segs,] 

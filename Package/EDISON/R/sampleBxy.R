@@ -4,8 +4,8 @@
 #' the MCMC simulation.
 #' 
 #' 
-#' @param xi Response data.
-#' @param y Target data.
+#' @param xi Response data, n by p.
+#' @param y Target data, n by 1.
 #' @param Sig2 Sigma squared.
 #' @param delta2 Signal-to-noise hyperparameter.
 #' @return The regression parameters.
@@ -20,8 +20,12 @@ sampleBxy <-
 function(xi, y, Sig2, delta2){
   # INPUT: xi, yi, sig2i, delta2
   # OUTPUT: B
-  Ml = (delta2 / (delta2+1)) * pseudoinverse(t(xi) %*% xi)
-  out = mvrnorm(1, mu=Ml %*% t(xi) %*% y, Sigma=Sig2*Ml)
+  #Ml = (delta2 / (delta2+1)) * pseudoinverse(t(xi) %*% xi)
+  p = ifelse(is.matrix(xi),dim(xi)[2],1)
+
+  Ml = (delta2 / (delta2+1)) * chol2inv(chol(crossprod(xi)+1e-4*diag(p)))
+  
+  out = mvrnorm(1, mu=Ml %*% crossprod(xi, y), Sigma=Sig2*Ml)
   return(out)
 }
 

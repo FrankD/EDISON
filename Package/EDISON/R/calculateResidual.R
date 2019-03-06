@@ -15,5 +15,5 @@ calculateResidual <- function(x, y, delta2) {
 
   L = t(y) %*% x;
 
-  return (t(y) %*% y - (delta2/(delta2+1)) %*% L %*% chol2inv(chol(crossprod(x))) %*% t(L))  
+  return (t(y) %*% y - (delta2/(delta2+1)) %*% L %*% chol2inv(chol(crossprod(x)+1e-4*diag(dim(x)[2]))) %*% t(L))  
 }

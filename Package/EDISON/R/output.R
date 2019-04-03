@@ -72,14 +72,14 @@ function(counters, listStock, GLOBvar, HYPERvar, OUTvar){
 	                       sep=""))
     }
   }
+  
+  results.all$n = n
       
   if(!OUTvar$by.node && OUTvar$save.file) {
     results = results.all
     save(results, file=paste(outputFile, "_analysis", 
 	     sep=""))
 	}
-	
-  results.all$n = n
 
   return(results.all)
 }

@@ -10,7 +10,6 @@
 #' changepoint probabilities.
 #' @author Frank Dondelinger
 #' @seealso \code{\link{calculateCPProbabilities}}
-#' @export calculateCPPGlobal
 calculateCPPGlobal <-
 function(prob.cps) {
   global.cps = matrix(0, 1, dim(prob.cps)[2])

@@ -31,6 +31,7 @@ function(X, GLOBvar, HYPERvar, s_init=NULL, options){
   ### Assignment of global variables used here ###
   smax = GLOBvar$smax
   q = GLOBvar$q
+  q.target = GLOBvar$q.target
   qmax = GLOBvar$qmax
   n = GLOBvar$n
   Mphase = GLOBvar$Mphase
@@ -52,11 +53,11 @@ function(X, GLOBvar, HYPERvar, s_init=NULL, options){
   ### End assignment ###
 
   E = list()
-  s = matrix(0, q, 1)
+  s = matrix(0, q.target, 1)
  
   CPinit = options$cp.init 
 
-  for(target in 1:q) {
+  for(target in 1:q.target) {
     ## Sample the number of breakpoint positions  
     if(!(is.null(CPinit))){
       # Same CPs for all target variables
@@ -88,7 +89,7 @@ function(X, GLOBvar, HYPERvar, s_init=NULL, options){
       ## CP (phase > 2)
       E[[target]] = c(1+dyn, n+1)
       cpt = s[target]
-    
+
       while(cpt > 0){
     	
         # Search for possible CP, not in E and not close to E 
@@ -124,8 +125,8 @@ function(X, GLOBvar, HYPERvar, s_init=NULL, options){
   }
   
   # Sample model structures from prior
-  for(target in 1:length(X)) {
-   
+  for(target in 1:q.target) {
+    
     S[[target]] = matrix(0, s[target]+1, q+1)
     
     for (i in 1:(s[target]+1)){

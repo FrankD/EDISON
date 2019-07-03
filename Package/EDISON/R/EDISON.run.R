@@ -8,6 +8,8 @@
 #' containing the results of \code{\link{simulateNetwork}}, a NumTimePoints
 #' by NumNodes matrix, or a NumTimeSeries by NumTimePoints by NumNodes array.
 #' @param output.file Where to save the output of the MCMC simulation.
+#' @param scaling If \code{TRUE}, scale the input data to mean 0 and standard
+#' deviation 1, else leave it unchanged.
 #' @param information.sharing Which information sharing prior to use:
 #' \code{'poisson'} for the Poisson prior (no information sharing),
 #' \code{'exp_hard'} or \code{'exp_soft'} for the exponential prior with hard
@@ -22,6 +24,10 @@
 #' @param fixed.edges Matrix of size NumNodes by NumNodes, with 
 #' \code{fixed.edges[i,j]==1|0} if the edge between nodes i and j is fixed, and 
 #' -1 otherwise. Defaults to \code{NULL} (no edges fixed).
+#' @param pred.vars Indices of predictor variables (parents in the network). 
+#' If NULL, all variables are potential parents.
+#' @param target.vars Indices of target variables (children in the network). 
+#' If NULL, all variables are potential children.
 #' @return Returns the results of the MCMC simulation, similar to
 #' \code{\link{runDBN}}.
 #' @author Sophie Lebre Frank Dondelinger
@@ -59,9 +65,10 @@
 #' 
 #' @export EDISON.run
 EDISON.run <-
-function(input, output.file="EDISON.output", 
+function(input, output.file="EDISON.output", scaling=TRUE,
                        information.sharing='poisson', num.iter=10000, 
-                       prior.params=NULL, options=NULL, fixed.edges=NULL) {
+                       prior.params=NULL, options=NULL, fixed.edges=NULL,
+                       pred.vars=NULL, target.vars=NULL) {
 
   if(is.matrix(input)) {
     data = array(input, dim=c(1, dim(input)))
@@ -80,11 +87,30 @@ function(input, output.file="EDISON.output",
 
   # Number of variables
   q = dim(data)[3]
-
+  q.target = dim(data)[3]
+  
+  # If no target or predictor variables specified,
+  # use all.
+  if(is.null(target.vars)) {
+    target.vars = 1:q
+  } else {
+    q.target = length(target.vars)
+  }
+  if(is.null(pred.vars)) {
+    pred.vars = 1:q
+  } else {
+    q = length(pred.vars)
+  }
 
   if(is.null(options)) options = defaultOptions()
   
-  if(is.null(fixed.edges)) fixed.edges = matrix(-1, q, q)
+  if(is.null(fixed.edges)) fixed.edges = matrix(-1, q, q.target)
+  
+  # Standardise inputs to N(0,1)
+  if(scaling){
+    data = sweep(data, 3, apply(data, 3, mean))
+    data = sweep(data, 3, apply(data, 3, sd), '/')
+  }
   
   ##### Important remark ####
   # if you know the changepoint position, and you want to run the procedure only for estimating the model within phases, 
@@ -93,7 +119,9 @@ function(input, output.file="EDISON.output",
   # however there is still some probleme with the 'output' fonctions in this case, I can help updating this when I will be back to work. 
 
   # Run TVDBN procedure:
-  results = runDBN(targetdata=data, n=n, q=q, niter=num.iter, 
+  results = runDBN(targetdata=data[,,target.vars,drop=FALSE], 
+                   preddata=data[,,pred.vars,drop=FALSE], 
+                   n=n, q=q, q.target=q.target, niter=num.iter, 
                    method=information.sharing, prior.params=prior.params, 
                    options=options, outputFile=output.file, 
                    fixed.edges=fixed.edges)

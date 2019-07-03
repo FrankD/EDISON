@@ -27,6 +27,7 @@ function(X, Y, sinit, GLOBvar, HYPERvar, options){
   smax = GLOBvar$smax
   p = GLOBvar$p
   q = GLOBvar$q
+  q.target = GLOBvar$q.target
   birth_proposals = GLOBvar$birth_proposals 
   method = GLOBvar$method
   prior.params = GLOBvar$prior.params
@@ -47,7 +48,7 @@ function(X, Y, sinit, GLOBvar, HYPERvar, options){
   counters = list(cptMove=cptMove, 
                   acceptMove=acceptMove)
   
-  for(target in 1:length(X)) {
+  for(target in 1:q.target) {
     # For stocking B (vector of predictor coefficients + 
     # constant (q+1) for each phase (smax+1))
     Bstock[[target]] = matrix(0, niter-1, (q+1)*(smax+p))
@@ -100,7 +101,7 @@ function(X, Y, sinit, GLOBvar, HYPERvar, options){
                    hyper.proposals=hyper.proposals)  
 
   ## Stock first iteration
-  for(target in 1:length(X)) {
+  for(target in 1:q.target) {
     Estock[[target]][1,1:(s[target]+2)] = init$E[[target]]
     Bstock[[target]][1,1:((s[target]+1)*(q+1))] = c(t(init$B[[target]]))
   }

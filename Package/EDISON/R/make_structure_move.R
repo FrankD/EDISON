@@ -36,8 +36,7 @@
 #' gradually time-varying structure", Machine Learning.
 #' @export make_structure_move
 make_structure_move <-
-function(x, y, S, B, Sig2, q,  
-                                qmax, network.info, method, Mphase, E, 
+function(x, y, S, B, Sig2, q, qmax, network.info, method, Mphase, E, 
          fixed.edges, HYPERvar) {
   # Makes a network structure move for one edge in one of the segments.
   #

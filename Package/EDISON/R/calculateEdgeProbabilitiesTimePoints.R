@@ -8,7 +8,8 @@
 #' MCMC simulation, as obtained by \code{\link{EDISON.run}},
 #' \code{\link{runDBN}}.
 #' @param cps Changepoint vector.
-#' @param numNodes Number of nodes in the network.
+#' @param num.targets Number of target nodes in the network.
+#' @param num.preds Number of predictors in the dataset. 
 #' @return A list of length equal to the number of timepoints, where each entry
 #' contains a matrix of size NumNodes by NumNodes with the marginal posterior
 #' edge probabilities of the network at this timepoint.
@@ -18,7 +19,7 @@
 #' \code{\link{calculateEdgeProbabilitiesSegs}}
 #' @export calculateEdgeProbabilitiesTimePoints
 calculateEdgeProbabilitiesTimePoints <- 
-  function(network.samples, cps, numNodes) {
+  function(network.samples, cps, num.targets, num.preds) {
   sampled = network.samples[[1]]$sampled 
   numSegs = length(cps) - 1
   
@@ -27,11 +28,11 @@ calculateEdgeProbabilitiesTimePoints <-
   prob.networks = list() 
   
   for(seg in 1:length(segs)) {
-    prob.networks[[seg]] = matrix(0, numNodes, numNodes)
+    prob.networks[[seg]] = matrix(0, num.preds, num.targets)
   }
   
   for(sample.i in 1:length(sampled)) {
-    for(target in 1:numNodes) {
+    for(target in 1:num.targets) {
       cps.temp = network.samples[[target]]$cp_samples[sample.i,]
       max.cp   = length(cps.temp) - 1
       cps.temp = cps.temp[cps.temp > 0]
@@ -49,12 +50,12 @@ calculateEdgeProbabilitiesTimePoints <-
       
       target.net.temp = 
         matrix(network.samples[[target]]$edge_samples[sample.i,],
-               numNodes+1, max.cp)
+               num.preds+1, max.cp)
       target.net.temp = (abs(target.net.temp) > 0)*1
       
       for(seg.i in 1:length(segs)) {
         prob.networks[[seg.i]][,target] = prob.networks[[seg.i]][,target] + 
-          target.net.temp[1:numNodes, segs.temp[seg.i]] 
+          target.net.temp[1:num.preds, segs.temp[seg.i]] 
       }
     } 
   }

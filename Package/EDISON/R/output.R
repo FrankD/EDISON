@@ -28,6 +28,7 @@ function(counters, listStock, GLOBvar, HYPERvar, OUTvar){
   target = GLOBvar$target
   n = GLOBvar$n
   q = GLOBvar$q
+  q.target = GLOBvar$q.target
   ### End assignement ###
 
   ### Assignment of results variables used here ###
@@ -57,7 +58,7 @@ function(counters, listStock, GLOBvar, HYPERvar, OUTvar){
     sampled = after.burnin
   }
 
-  for(target in 1:q) {
+  for(target in 1:q.target) {
               
     # Collect results
     results = list(cp_samples=Estock[[target]][sampled,], 

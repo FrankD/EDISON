@@ -8,14 +8,13 @@
 #' NumTimePoints.
 #' @param preddata Optional: Input response data, if different from the target
 #' data.
-#' @param q Number of nodes.
+#' @param q Number of potential parent nodes.
+#' @param q.target Number of potential child nodes (targets).
 #' @param n Number of timepoints.
 #' @param multipleVar \code{TRUE} when a specific variance is estimated for
 #' each segment, \code{FALSE} otherwise.
 #' @param minPhase Minimal segment length.
 #' @param niter Number of MCMC iterations.
-#' @param scaling If \code{TRUE}, scale the input data to mean 0 and standard
-#' deviation 1, else leave it unchanged.
 #' @param method Network structure prior to use: \code{'poisson'} for a sparse
 #' Poisson prior (no information sharing), \code{'exp_hard'} or
 #' \code{'exp_soft'} for the exponential information sharing prior with hard or
@@ -48,9 +47,9 @@
 #' gradually time-varying structure", Machine Learning.
 #' @export runDBN
 runDBN <-
-function(targetdata, preddata=NULL, q, n,
-  multipleVar=TRUE, minPhase=2, 
-  niter=20000, scaling=TRUE, 
+function(targetdata, preddata=NULL, q, q.target, 
+         n, multipleVar=TRUE, minPhase=2, 
+  niter=20000, 
   method='poisson', prior.params=NULL,
   self.loops=TRUE, k = 15, options=NULL, outputFile='.',
   fixed.edges=NULL) {
@@ -105,15 +104,14 @@ function(targetdata, preddata=NULL, q, n,
 	  nbVarMax=1
   }
   
-  # Standardise inputs to N(0,1)
-  if(scaling){
-    targetdata = sweep(targetdata, 3, apply(targetdata, 3, mean))
-    targetdata = sweep(targetdata, 3, apply(targetdata, 3, sd), '/')
-  }
-  
   # Read input data
   targetData = targetdata
-	predData=targetData
+  
+  if(is.null(preddata)) {
+	  predData=targetData
+  } else {
+    predData=preddata
+  }
 
   # A few tests :
   # The number of columns corresponds to n (timepoints) x m (repetitions)
@@ -136,11 +134,11 @@ function(targetdata, preddata=NULL, q, n,
   # Position of the predictor variables in the data for each response 
   # (matrix [nrow(targetData) x q]) 
   # By default all the predictors of predData are taken for each gene
-  bestPosMat = matrix(1:q, q, q, byrow=TRUE)
+  bestPosMat = matrix(1:q, dim(targetData)[3], q, byrow=TRUE)
     
   ### Create Global Variables used in all functions
   GLOBvar = list(n=n, m=dim(targetData)[1], 
-                 p=1, q=q, qmax=options$maxTF, smax=options$maxCP, 
+                 p=1, q=q, q.target=q.target, qmax=options$maxTF, smax=options$maxCP, 
                  dyn=options$dyn, 
     minPhase=minPhase, nbVarMax=nbVarMax, Mphase=Mphase, bestPosMat=bestPosMat, 
     niter=niter, target=NULL,predNames=predNames, targetNames=targetNames, 

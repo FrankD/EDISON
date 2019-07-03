@@ -9,6 +9,8 @@
 #' using \code{\link{EDISON.run}} and \code{\link{runDBN}}.
 #' @param cps Optionally specifies changepoints to allow for calculating the
 #' marginal posterior edge probabilities for specific segments.
+#' @param num.preds Number of predictors in the dataset. If NULL, set to be the same
+#' as the number of target variables.
 #' @return A list with elements: \item{probs.all}{A list containing marginal
 #' edge posterior probabilities for each timepoint.} \item{probs.segs}{A list
 #' containing marginal edge posterior probabilities for each specified
@@ -35,14 +37,16 @@
 #' 
 #' @export calculateEdgeProbabilities
 calculateEdgeProbabilities <-
-function(network.samples, cps=NULL) {
+function(network.samples, cps=NULL, num.preds=NULL) {
   if(is.null(cps)) cps = c(2, network.samples$n+1)
   
-  numNodes = length(network.samples) - 1
+  num.targets = length(network.samples) - 1
+  
+  if(is.null(num.preds)) num.preds = num.targets
 
-  prob.networks = calculateEdgeProbabilitiesTimePoints(network.samples, cps, numNodes)
+  prob.networks = calculateEdgeProbabilitiesTimePoints(network.samples, cps, num.targets, num.preds)
   prob.networks.segs = 
-    calculateEdgeProbabilitiesSegs(prob.networks, cps, numNodes)
+    calculateEdgeProbabilitiesSegs(prob.networks, cps, num.targets, num.preds)
   
   return(list(probs.all=prob.networks, probs.segs=prob.networks.segs))
 }

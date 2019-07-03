@@ -31,6 +31,7 @@ function(X, Y, initiation, GLOBvar, HYPERvar){
   niter = GLOBvar$niter
   smax = GLOBvar$smax
   q = GLOBvar$q
+  q.target = GLOBvar$q.target
   birth_proposals = GLOBvar$birth_proposals
   sequential_model = GLOBvar$sequential_model
   method = GLOBvar$method
@@ -96,7 +97,7 @@ function(X, Y, initiation, GLOBvar, HYPERvar){
       if(i > 5000 && GLOBvar$psrf.check) {
         psrf_r = c()
         
-        for(target in 1:q) {
+        for(target in 1:q.target) {
           psrf_r = c(psrf_r, psrf_check(Bstock[[target]], q, smax, i)) 
         }
         
@@ -107,7 +108,7 @@ function(X, Y, initiation, GLOBvar, HYPERvar){
       
     }
       
-    target = sample(1:q, 1)
+    target = sample(1:q.target, 1)
     
     D = rgamma(1, shape=s[target]+alphaD, rate = 1+betaD)
 
@@ -177,7 +178,7 @@ function(X, Y, initiation, GLOBvar, HYPERvar){
     ## Stock model and parameters
     if(r == samples[i]) {      
       
-      for(node in 1:q) {
+      for(node in 1:q.target) {
         Estock[[node]][i,1:(s[node]+2)] = E[[node]]
         Bstock[[node]][i,1:((s[node]+1)*(q+1))] = c(t(Ball[[node]]))
       }

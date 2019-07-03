@@ -26,7 +26,7 @@ function(targetData, predData, GLOBvar){
   
   # flatten target data
   flat.targetData = t(apply(targetData, 3, c))
-
+  
   # Read target data
   Y = as.array(readDataTS(data=flat.targetData, posI=target, t0=dyn, tf=n, m=m, n=n))
 

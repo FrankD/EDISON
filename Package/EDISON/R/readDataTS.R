@@ -27,6 +27,7 @@ function(data, posI, t0, tf, m, n){
 
   # Sort positions per time (tps1#1 tps1#2 .. tps1#M tps2#1 ... tpsN#M
   #posT = c(sapply(1:n,seq,m*n,by=n))
+  
   posT = 1:(m*n) # already sorted like that
   
   # Not all timepoints are considered if dyn > 0

@@ -152,7 +152,7 @@ function(X, Y, initiation, GLOBvar, HYPERvar){
       Ball[[target]] = out$Ball
     }
     
-    for(node in 1:q) {
+    for(node in 1:q.target) {
       Sall[[node]] = (abs(Ball[[node]])>0)*1
       s[node] = length(E[[node]])-2
     }

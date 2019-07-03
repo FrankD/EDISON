@@ -79,7 +79,7 @@ function(Eall, Sall, Ball, Sig2all, X, Y, GLOBvar, HYPERvar,
 
   model = 0
     
-  # Group information about network segments    
+  # Group information about network segments  
   network.info = CollectNetworkInfo(Sall, Eall, prior.params, -1, 
                                     target, q, self.loops, k)
     

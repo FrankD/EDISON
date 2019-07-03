@@ -77,7 +77,7 @@ function(Sall, Eall, prior.params, posPhase, target,
   network.info$q = q
 
   for(i in 1:length(network.info$nets)) {
-    network.info$nets[[i]] = network.info$nets[[i]][1:q,]
+    network.info$nets[[i]] = network.info$nets[[i]][1:q,,drop=FALSE]
   }
   
 

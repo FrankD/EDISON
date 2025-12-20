@@ -25,4 +25,3 @@ Updates the network.info data structure so that it stays consistent.
 \author{
 Frank Dondelinger
 }
-

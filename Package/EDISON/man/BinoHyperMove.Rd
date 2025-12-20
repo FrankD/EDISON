@@ -27,9 +27,6 @@ This function proposes a move for one of the hyperparameters of the binomial
 prior, calculates the acceptance probability and accepts the move
 accordingly.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For information about the binomial information sharing prior,
 see:
@@ -44,4 +41,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{BinoHyperMove}}
 }
-
+\author{
+Frank Dondelinger
+}

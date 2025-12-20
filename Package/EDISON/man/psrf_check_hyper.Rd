@@ -18,9 +18,6 @@ Returns the maximum PSRF value.
 This function checks the potential scale reduction factors for the
 hyperparameters of the information sharing priors.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 Gelman and Rubin (1992) Inference from iterative simulation
 using multiple sequences, Statistical Science.
@@ -28,4 +25,6 @@ using multiple sequences, Statistical Science.
 \seealso{
 \code{\link{psrf}}, \code{\link{psrf_check}}
 }
-
+\author{
+Frank Dondelinger
+}

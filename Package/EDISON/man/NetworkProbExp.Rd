@@ -17,9 +17,6 @@ Returns the log prior probability of the network segments.
 This function calculates the log prior probability of the network structure.
 It uses the exponential information sharing prior.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For information about the exponential information sharing prior,
 see:
@@ -34,4 +31,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{NetworkRatioExp}}, \code{\link{CalculatePriorRatio}}
 }
-
+\author{
+Frank Dondelinger
+}

@@ -4,10 +4,23 @@
 \alias{runDBN}
 \title{Setup and run the MCMC simulation.}
 \usage{
-runDBN(targetdata, preddata = NULL, q, n, multipleVar = TRUE,
-  minPhase = 2, niter = 20000, scaling = TRUE, method = "poisson",
-  prior.params = NULL, self.loops = TRUE, k = 15, options = NULL,
-  outputFile = ".", fixed.edges = NULL)
+runDBN(
+  targetdata,
+  preddata = NULL,
+  q,
+  n,
+  multipleVar = TRUE,
+  minPhase = 2,
+  niter = 20000,
+  scaling = TRUE,
+  method = "poisson",
+  prior.params = NULL,
+  self.loops = TRUE,
+  k = 15,
+  options = NULL,
+  outputFile = ".",
+  fixed.edges = NULL
+)
 }
 \arguments{
 \item{targetdata}{Target input data: A matrix of dimensions NumNodes by
@@ -64,11 +77,6 @@ samples, changepoint samples and hyperparameter samples. For details, see
 This function initialises the variabes for the MCMC simulation, runs the
 simulation and returns the output.
 }
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
 \references{
 For more information about the MCMC simulations, see:
 
@@ -79,4 +87,8 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{output}}
 }
+\author{
+Sophie Lebre
 
+Frank Dondelinger
+}

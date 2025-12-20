@@ -36,9 +36,6 @@ Returns the new samples sigma squared values.
 This function samples new values for the sigma squared variances, given the
 current network structure. A univariate distribution is assumed.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For more information about the model, see:
 
@@ -49,4 +46,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{updateSigMulti}}
 }
-
+\author{
+Sophie Lebre
+}

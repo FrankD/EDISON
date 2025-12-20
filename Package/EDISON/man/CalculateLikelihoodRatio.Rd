@@ -30,9 +30,6 @@ This function calculates the ratio of the liklihoods in a network structure
 move. The returned value is the ratio for the modification of one edge in
 one segment.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For more information about the hyperparameters and the
 functional form of the likelihood, see:
@@ -44,4 +41,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{CalculatePriorRatio}}
 }
-
+\author{
+Frank Dondelinger
+}

@@ -51,4 +51,3 @@ options$save.file = TRUE
 \author{
 Frank Dondelinger
 }
-

@@ -34,4 +34,3 @@ densities = dinvgamma(samples, shape=1, scale=1)
 \author{
 Frank Dondelinger
 }
-

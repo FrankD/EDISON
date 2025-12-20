@@ -32,10 +32,9 @@ param = rpois(1, 5)
 new.param = ProposeDiscrete(param, 2, 10)
 
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{proposeContinuous}}
 }
-
+\author{
+Frank Dondelinger
+}

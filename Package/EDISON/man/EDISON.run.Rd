@@ -4,9 +4,15 @@
 \alias{EDISON.run}
 \title{Wrapper function for starting an MCMC simulation}
 \usage{
-EDISON.run(input, output.file = "EDISON.output",
-  information.sharing = "poisson", num.iter = 10000, prior.params = NULL,
-  options = NULL, fixed.edges = NULL)
+EDISON.run(
+  input,
+  output.file = "EDISON.output",
+  information.sharing = "poisson",
+  num.iter = 10000,
+  prior.params = NULL,
+  options = NULL,
+  fixed.edges = NULL
+)
 }
 \arguments{
 \item{input}{Input data. Either a filename pointing to an R data file
@@ -69,9 +75,6 @@ options$save.file = TRUE
 #                  options=options)
 
 }
-\author{
-Sophie Lebre Frank Dondelinger
-}
 \references{
 For details on the model and MCMC simulation, see:
 
@@ -82,4 +85,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{runDBN}}
 }
-
+\author{
+Sophie Lebre Frank Dondelinger
+}

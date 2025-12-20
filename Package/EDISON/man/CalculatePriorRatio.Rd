@@ -30,9 +30,6 @@ structure move.
 This function calculates the ratio of the network structure priors for a
 structure move.
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For more information on the network structure priors, see:
 
@@ -46,4 +43,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{CalculateLikelihoodRatio}}
 }
-
+\author{
+Frank Dondelinger
+}

@@ -29,10 +29,9 @@ samples = rinvgamma(100, shape=1, scale=1)
 densities = dinvgamma(samples, shape=1, scale=1)
 
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{dinvgamma}}
 }
-
+\author{
+Frank Dondelinger
+}

@@ -25,10 +25,9 @@ Returns the target data.
 \description{
 This function reads in the target data.
 }
-\author{
-Sophie Lebre
-}
 \seealso{
 \code{\link{buildXY}}
 }
-
+\author{
+Sophie Lebre
+}

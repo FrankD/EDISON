@@ -23,9 +23,6 @@ Returns a vector of regression coefficients.
 \description{
 This function samples the initial regression coefficients for the networks.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For details of the regression model, see:
 
@@ -33,4 +30,6 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-
+\author{
+Sophie Lebre
+}

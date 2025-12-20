@@ -29,11 +29,6 @@ binomial information sharing prior.}
 This function samples the initial hyperparameters and parameters that are
 needed for the MCMC simulation.
 }
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
 \references{
 For more information about the parameters and hyperparameters,
 see:
@@ -45,4 +40,8 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{init}}
 }
+\author{
+Sophie Lebre
 
+Frank Dondelinger
+}

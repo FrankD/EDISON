@@ -4,49 +4,48 @@
 \name{EDISON-package}
 \alias{EDISON}
 \alias{EDISON-package}
-\title{Allows for network reconstruction and changepoint detection.}
+\title{EDISON: Network reconstruction and changepoint detection for time series}
 \description{
-This package runs an MCMC simulation to reconstruct networks from time
-series data, using a non-homogeneous, time-varying dynamic Bayesian network.
-Networks segments and changepoints are inferred concurrently, and
-information sharing priors provide a reduction of the inference uncertainty.
-}
-\details{
-\tabular{ll}{ Package: \tab EDISON\cr Type: \tab Package\cr Version: \tab
-1.1.1\cr Date: \tab 2016-03-30\cr License: \tab GPL-2\cr LazyLoad: \tab yes\cr
-}
+Reconstructs networks from time series data using a non-homogeneous,
+time-varying dynamic Bayesian network fitted with MCMC. Network segments and
+changepoints are inferred concurrently; information-sharing priors can reduce
+inference uncertainty.
 }
 \examples{
-
 # Generate random gene network and simulate data from it
-dataset = simulateNetwork(l=25)
+dataset = simulateNetwork(l = 25)
 
-# Run MCMC simulation to infer networks and changepoint locations
-result = EDISON.run(dataset$sim_data, num.iter=500)
+# Running the full MCMC can take time; use a small number of iterations
+# for examples. Increase `num.iter` for real analyses.
+\donttest{
+set.seed(1)
+result = EDISON.run(dataset$sim_data, num.iter = 50)
 
-# Calculate posterior probabilities of changepoints
+# Posterior probabilities of changepoints
 cps = calculateCPProbabilities(result)
 
-# Calculate marginal posterior probabilities of edges in the network
+# Marginal posterior probabilities of edges
 network = calculateEdgeProbabilities(result)
-
-
 }
-\author{
-Frank Dondelinger, Sophie Lebre
-
-Maintainer: Frank Dondelinger <fdondelinger.work@gmail.com>
 }
 \references{
-Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian
-networks with Bayesian regularization for inferring gene regulatory networks
-with gradually time-varying structure", Machine Learning.
+Dondelinger et al. (2012). Non-homogeneous dynamic Bayesian networks with
+Bayesian regularization for inferring gene regulatory networks with gradually
+time-varying structure. *Machine Learning*.
 
-Husmeier et al. (2010), "Inter-time segment information sharing for
-non-homogeneous dynamic Bayesian networks", NIPS.
+Husmeier et al. (2010). Inter-time segment information sharing for
+non-homogeneous dynamic Bayesian networks. *NIPS*.
 }
 \seealso{
 \code{\link[corpcor:corpcor-package]{corpcor}}
 }
-\keyword{package}
+\author{
+\strong{Maintainer}: Frank Dondelinger \email{fdondelinger.work@gmail.com}
 
+Authors:
+\itemize{
+  \item Sophie Lebre
+}
+
+}
+\keyword{internal}

@@ -30,12 +30,11 @@ network, changepoint and hyperparameter samples.}
 This function intialises the parameters and variables needed for the MCMC
 simulation.
 }
+\seealso{
+\code{\link{sampleParms}}
+}
 \author{
 Sophie Lebre
 
 Frank Dondelinger
 }
-\seealso{
-\code{\link{sampleParms}}
-}
-

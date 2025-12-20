@@ -24,4 +24,3 @@ the input data.
 \author{
 Sophie Lebre
 }
-

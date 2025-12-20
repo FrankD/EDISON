@@ -22,9 +22,6 @@ The sampled number of changepoints.
 This function samples the initial number of changepoints from a sparse
 Poisson prior.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For more information on the prior choice and sampling, see:
 
@@ -32,4 +29,6 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-
+\author{
+Sophie Lebre
+}

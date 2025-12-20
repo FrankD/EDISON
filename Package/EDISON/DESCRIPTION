@@ -1,10 +1,16 @@
 Package: EDISON
 Type: Package
 Title: Network Reconstruction and Changepoint Detection
-Version: 1.1.1
-Date: 2016-03-30
-Author: Frank Dondelinger, Sophie Lebre
-Maintainer: Frank Dondelinger <fdondelinger.work@gmail.com>
+Version: 1.1.2
+Date: 2025-12-20
+Authors@R: c(
+    person(given = "Frank",
+           family = "Dondelinger",
+           role = c("aut", "cre"),
+           email = "fdondelinger.work@gmail.com"),
+    person(given = "Sophie",
+           family = "Lebre",
+           role = "aut"))
 Description: Package EDISON (Estimation of Directed Interactions from
     Sequences Of Non-homogeneous gene expression) runs an MCMC
     simulation to reconstruct networks from time series data, using
@@ -19,7 +25,8 @@ Suggests:
 Depends:
     corpcor,
     MASS
-Packaged: 2016-03-30 11:33:10 UTC; frankd
+Packaged: 2025-12-20 11:33:10 UTC; frankd
 Repository: CRAN
-Date/Publication: 2016-03-30 11:24:38
-RoxygenNote: 5.0.1
+Date/Publication: 2025-12-20 11:24:38
+Encoding: UTF-8
+RoxygenNote: 7.3.3

@@ -27,4 +27,3 @@ representing it as a list of segments.
 \author{
 Frank Dondelinger
 }
-

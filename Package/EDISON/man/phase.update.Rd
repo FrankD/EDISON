@@ -44,11 +44,6 @@ level-1 hyperparameter move, 3 for a level-2 hyperparameter move.}
 This function makes a network structure or information sharing
 hyperparameter move.
 }
-\author{
-Sophie Lebre
-
-Frank Dondelinger
-}
 \references{
 For more information on network structure moves and information
 sharing priors, see:
@@ -60,4 +55,8 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{make_structure_move}}
 }
+\author{
+Sophie Lebre
 
+Frank Dondelinger
+}

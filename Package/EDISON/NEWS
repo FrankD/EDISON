@@ -1,5 +1,9 @@
 RELEASE HISTORY OF THE "EDISON" PACKAGE
 
+Version 1.1.2
+
+ - Updated tests following changes to testthat package.
+
 Version 1.1.1
 
  - Fixed incorrect log transformation in dinvgamma function.

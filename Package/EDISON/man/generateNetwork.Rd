@@ -4,9 +4,20 @@
 \alias{generateNetwork}
 \title{Generate a random network.}
 \usage{
-generateNetwork(lambda_2 = 0.45, q = 10, min_phase_length = 1,
-  k_bar = 5, l = 10, lambda_3 = 2, spacing = 1, gauss_weights = TRUE,
-  same = FALSE, change_method = "sequential", fixed = FALSE, cps = NULL)
+generateNetwork(
+  lambda_2 = 0.45,
+  q = 10,
+  min_phase_length = 1,
+  k_bar = 5,
+  l = 10,
+  lambda_3 = 2,
+  spacing = 1,
+  gauss_weights = TRUE,
+  same = FALSE,
+  change_method = "sequential",
+  fixed = FALSE,
+  cps = NULL
+)
 }
 \arguments{
 \item{lambda_2}{Average number of parents for each node in the network
@@ -70,10 +81,9 @@ network = generateNetwork(l=50, q=15, fixed=TRUE, k_bar=4)
 dataset = simulateNetwork(net=network)
 
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{simulateNetwork}}
 }
-
+\author{
+Frank Dondelinger
+}

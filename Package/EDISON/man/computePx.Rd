@@ -20,9 +20,6 @@ The projection matrix.
 This function computes the projection matrix that is needed for calculation
 of the likelihood.
 }
-\author{
-Sophie Lebre
-}
 \references{
 For more information about the hyperparameters and the
 functional form of the likelihood, see:
@@ -34,4 +31,6 @@ gradually time-varying structure", Machine Learning.
 \seealso{
 \code{\link{CalculateLikelihoodRatio}}
 }
-
+\author{
+Sophie Lebre
+}

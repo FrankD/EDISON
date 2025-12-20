@@ -36,4 +36,3 @@ taken from the MCMC simulation, and saves them to a file if appropriate.
 \author{
 Frank Dondelinger
 }
-

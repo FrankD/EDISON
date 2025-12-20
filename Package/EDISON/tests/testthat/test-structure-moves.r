@@ -326,12 +326,12 @@ test_that('mapping from local to global segments correct',
 
 # Test for updating network info within structure move
 test_that('network info the same before and after ',
-          expect_that(updateCorrectly(), is_true()))
+          expect_true(updateCorrectly()))
 
 # Test for potential bug with local and global segments
 test_that('rejected moves make no change',
-          expect_that(noChangeOnReject(), is_true()))
+          expect_true(noChangeOnReject()))
 
 # Test output is not NULL (Generic Run Test) 
 test_that('output not null',
-          expect_that(is.null(EDISON.run(sim.data, num.iter=num.iter)), is_false()))
+          expect_false(is.null(EDISON.run(sim.data, num.iter=num.iter))))

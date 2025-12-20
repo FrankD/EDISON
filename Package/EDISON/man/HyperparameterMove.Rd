@@ -34,9 +34,6 @@ prior-specific functions \code{\link{ExpHyperMove}} and
 This function makes a hyperparameter move for the information sharing prior
 selected (or no move if no information sharing prior is selected).
 }
-\author{
-Frank Dondelinger
-}
 \references{
 For information about the information sharing priors, see:
 
@@ -47,4 +44,6 @@ Dondelinger et al. (2012), "Non-homogeneous dynamic Bayesian networks with
 Bayesian regularization for inferring gene regulatory networks with
 gradually time-varying structure", Machine Learning.
 }
-
+\author{
+Frank Dondelinger
+}

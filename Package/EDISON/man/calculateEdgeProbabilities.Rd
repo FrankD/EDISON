@@ -41,12 +41,11 @@ true.cps = c(2,dataset$epsilon)
 network = calculateEdgeProbabilities(result, cps=true.cps)
 
 }
-\author{
-Frank Dondelinger
-}
 \seealso{
 \code{\link{calculateEdgeProbabilitiesTimePoints}},
 
 \code{\link{calculateEdgeProbabilitiesSegs}}
 }
-
+\author{
+Frank Dondelinger
+}
